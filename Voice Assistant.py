@@ -95,6 +95,11 @@ if __name__=='__main__':
             webbrowser.open_new_tab("gmail.com")
             speak("Google Mail open now")
             time.sleep(5)
+        elif "shoping" in statement:
+            speak("nice mood sir")
+            webbrowser.open("amazon.com")
+            speak("here you are sir")
+            
 
         elif "weather" in statement:
             api_key = "8ef61edcf1c576d65d836254e11ea420"
