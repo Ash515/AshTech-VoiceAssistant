@@ -12,7 +12,7 @@ A voice assistant is a digital assistant that uses voice recognition, speech syn
 ## Demo video
 - [AshTech 2.0 - AI Personal Voice Assistant](https://www.youtube.com/watch?v=BArmz8vtHB8)
 
-## Contribution guidelines 
+## :handshake: Contribution guidelines 
 Follow these algorithms to contribute to the AshTech repository 📝
 - Fork this repository 
 - Select your comfortable issues given in issues feature [click here to see the issues](https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant./issues).
@@ -62,5 +62,13 @@ Thats all about installation and version control with **Git**
 
 <img src="Output.png" width=800>
 
+## :clap: And it's done!
+Feel free to mail me for any doubts/query 
+:email: theyoungtech515@gmail.com
 
+## :heart: Owner
+Made with :heart:&nbsp;  by [Ashwin Kumar R](https://github.com/Ash515)
+
+## :eyes: License
+MIT © [Ashwin Kumar R](https://github.com/chandrikadeb7/Face-Mask-Detection/blob/master/LICENSE)
 
