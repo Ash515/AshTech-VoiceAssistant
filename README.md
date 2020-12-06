@@ -9,7 +9,7 @@ A voice assistant is a digital assistant that uses voice recognition, speech syn
 - Capturing images. 📸 
 - Predicts time, date, weather report etc.💡🔎
 
-## Youtube video
+## Demo video
 - [AshTech 2.0 - AI Personal Voice Assistant](https://www.youtube.com/watch?v=BArmz8vtHB8)
 
 ## Contribution guidelines 
@@ -23,7 +23,14 @@ Follow these algorithms to contribute to the AshTech repository 📝
 ### Note  
 Feel free to file a new issue with a respective title and description on the **AshTech- AI Personal Voice Assistant**.  If you already found a solution to your problem, I would love to review your pull request! 💚🤎
 
-# Installation 
+## :key: Prerequisites
+- You should install python version 3.7
+- import all modules required for the project using this command
+```
+pip install <module name>
+```
+
+# 🚀&nbsp;Installation 
 1. Clone the repository 
 ```
 https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant..git
@@ -32,19 +39,26 @@ https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant..git
 ```
 $git status
 ```
-3. To directly add your files to github
-```
-$git add .
-```
-4. For using VScode for editing your files 
+
+3.For using VScode for editing your files 
 ```
 $git code .
 ```
+4. To directly add your files to github
+```
+$git add .
+```
+5. After writing your code commit your changes 
+```
+$git commit -m  <message>
+```
+6. To pull your code to reposoitory
+```
+$git push origin master
+```
+Thats all about installation and version control with **Git**
 
-
-
-
-
+## :key: Result 
 
 <img src="Output.png" width=800>
 
