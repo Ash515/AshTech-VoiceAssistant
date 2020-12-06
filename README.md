@@ -25,7 +25,21 @@ Feel free to file a new issue with a respective title and description on the **A
 
 # Installation 
 1. Clone the repository 
-
+```
+https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant..git
+```
+2. Check the status of your file 
+```
+$git status
+```
+3. To directly add your files to github
+```
+$git add .
+```
+4. For using VScode for editing your files 
+```
+$git code .
+```
 
 
 
