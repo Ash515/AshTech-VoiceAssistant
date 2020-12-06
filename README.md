@@ -15,7 +15,20 @@ A voice assistant is a digital assistant that uses voice recognition, speech syn
 ## Contribution guidelines 
 Follow these algorithms to contribute to the AshTech repository 📝
 - Fork this repository 
-- Go and pick the issues given in issues feature 
+- Select your comfortable issues given in issues feature [click here to see the issues](https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant./issues).
+- Try to solve the mentioned issues and make a pull request by using branch folder 🌿 .
+- Stricly maintain the clear commit name and message.
+- Strictly maintain the decorum of this repository ❤
+
+### Note  
+Feel free to file a new issue with a respective title and description on the **AshTech- AI Personal Voice Assistant**.  If you already found a solution to your problem, I would love to review your pull request! 💚🤎
+
+# Installation 
+1. Clone the repository 
+
+
+
+
 
 
 
