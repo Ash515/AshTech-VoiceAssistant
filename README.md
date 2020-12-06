@@ -1,4 +1,4 @@
-# Ashtech-Personal AI Voice Assistant.
+# Ashtech-Personal AI Voice Assistant. 
 ![Python](https://img.shields.io/badge/python-v3.7+-blue.svg)
 ![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
 ![Forks](https://img.shields.io/github/forks/Ash515/AshTech-AI_Personal_Voice_Assistant..svg?logo=github)
@@ -17,6 +17,9 @@ A voice assistant is a digital assistant that uses voice recognition, speech syn
 - Capturing images. 📸 
 - Predicts time, date, weather report etc.💡🔎
 
+##🌟 Tech Stacks
+**Python 3.7**
+
 ## :hourglass: Project Demo
 - [AshTech 2.0 - AI Personal Voice Assistant](https://www.youtube.com/watch?v=BArmz8vtHB8)
 
@@ -28,7 +31,7 @@ Follow these algorithms to contribute to the AshTech repository 📝
 - Stricly maintain the clear commit name and message.
 - Strictly maintain the decorum of this repository ❤
 
-### Note  
+### 📌Note  
 Feel free to file a new issue with a respective title and description on the **AshTech- AI Personal Voice Assistant**.  If you already found a solution to your problem, I would love to review your pull request! 💚🤎
 
 ## :key: Prerequisites
