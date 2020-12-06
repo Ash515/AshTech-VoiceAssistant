@@ -1,5 +1,6 @@
 # Ashtech-Personal-AI-Voice-Assistant.
 ![Python](https://img.shields.io/badge/python-v3.7+-blue.svg)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)]
 ![Forks](https://img.shields.io/github/forks/Ash515/AshTech-AI_Personal_Voice_Assistant..svg?logo=github)
 [![MIT License](https://img.shields.io/github/license/chandrikadeb7/Face-Mask-Detection.svg?style=flat-square)](https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant./blob/master/LICENSE)
 
