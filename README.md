@@ -17,7 +17,7 @@ A voice assistant is a digital assistant that uses voice recognition, speech syn
 - Capturing images. 📸 
 - Predicts time, date, weather report etc.💡🔎
 
-##🌟 Tech Stacks
+## 🌟 Tech Stacks
 **Python 3.7**
 
 ## :hourglass: Project Demo
