@@ -1,4 +1,7 @@
 # Ashtech-Personal-AI-Voice-Assistant.
+![Python](https://img.shields.io/badge/python-v3.7+-blue.svg)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)]
+[![Forks](https://img.shields.io/github/forks/chandrikadeb7/Face-Mask-Detection.svg?logo=github)]
 ## Introduction
 A voice assistant is a digital assistant that uses voice recognition, speech synthesis, and natural language processing (NLP) to provide a service through a particular application.
 
@@ -9,7 +12,7 @@ A voice assistant is a digital assistant that uses voice recognition, speech syn
 - Capturing images. 📸 
 - Predicts time, date, weather report etc.💡🔎
 
-## Demo video
+## :hourglass: Project Demo
 - [AshTech 2.0 - AI Personal Voice Assistant](https://www.youtube.com/watch?v=BArmz8vtHB8)
 
 ## :handshake: Contribution guidelines 
@@ -70,5 +73,5 @@ Feel free to mail me for any doubts/query
 Made with :heart:&nbsp;  by [Ashwin Kumar R](https://github.com/Ash515)
 
 ## :eyes: License
-MIT © [Ashwin Kumar R](https://github.com/chandrikadeb7/Face-Mask-Detection/blob/master/LICENSE)
+MIT © [Ashwin Kumar R](https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant./blob/master/LICENSE)
 
