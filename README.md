@@ -1,10 +1,10 @@
 # Ashtech-Personal AI Voice Assistant. 
 ![Python](https://img.shields.io/badge/python-v3.7+-blue.svg)
 ![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
-![Forks](https://img.shields.io/github/forks/Ash515/AshTech-AI_Personal_Voice_Assistant..svg?logo=github)
-![Stargazers](https://img.shields.io/github/stars/Ash515/AshTech-AI_Personal_Voice_Assistant..svg?logo=github)
-![Issues](https://img.shields.io/github/issues/Ash515/AshTech-AI_Personal_Voice_Assistant..svg?logo=github)
-[![MIT License](https://img.shields.io/github/license/chandrikadeb7/Face-Mask-Detection.svg?style=flat-square)](https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant./blob/master/LICENSE)
+![Forks](https://img.shields.io/github/forks/Ash515/AshTech-AI_Personal_Voice_Assistant.svg?logo=github)
+![Stargazers](https://img.shields.io/github/stars/Ash515/AshTech-AI_Personal_Voice_Assistant.svg?logo=github)
+![Issues](https://img.shields.io/github/issues/Ash515/AshTech-AI_Personal_Voice_Assistant.svg?logo=github)
+[![MIT License](https://img.shields.io/github/license/chandrikadeb7/Face-Mask-Detection.svg?style=flat-square)](https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant/blob/master/LICENSE)
 
 
 ## 🔎  Introduction
@@ -26,7 +26,7 @@ A voice assistant is a digital assistant that uses voice recognition, speech syn
 ## :handshake: Contribution guidelines 
 Follow these algorithms to contribute to the AshTech repository 📝
 - Fork this repository 
-- Select your comfortable issues given in issues feature [click here to see the issues](https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant./issues).
+- Select your comfortable issues given in issues feature [click here to see the issues](https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant/issues).
 - Try to solve the mentioned issues and make a pull request by using branch folder 🌿 .
 - Stricly maintain the clear commit name and message.
 - Strictly maintain the decorum of this repository ❤
