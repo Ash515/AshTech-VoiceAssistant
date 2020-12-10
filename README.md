@@ -44,7 +44,7 @@ pip install <module name>
 # 🚀&nbsp;Installation 
 1. Clone the repository 
 ```
-https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant..git
+https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant.git
 ```
 2. Check the status of your file 
 ```
