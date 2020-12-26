@@ -12,6 +12,8 @@ import json
 import requests
 import pyaudio
 
+import pyttsx3 // this module was used before importing
+
 
 
 
@@ -95,10 +97,24 @@ if __name__=='__main__':
             webbrowser.open_new_tab("gmail.com")
             speak("Google Mail open now")
             time.sleep(5)
-        elif "shoping" in statement:
+        elif "shopping" in statement or "purchase" in staement or "buy" in statement:
             speak("nice mood sir")
             webbrowser.open("amazon.com")
             speak("here you are sir")
+
+
+           # adding functionality to open System programs like notepad etc
+
+           # It assumes that the path of notepad is set in Environment variables
+           # to set the path, press windows icon, search for notepad, then on right hand
+           # side, click on open file location, then it will open the path to shortcut of
+           # notepad program in your system, again right click, and select open file
+           # location, the copy its path and set a new environment variable, with
+           # variable name -> Notepad
+           # variable value -> path copied in above steps
+        elif "notepad" in statement or "texteditor" in statement:
+        	speak("Opening notepad for you")
+        	os.system(Notepad)
             
 
         elif "weather" in statement:
