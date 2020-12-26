@@ -11,6 +11,7 @@ import wolframalpha
 import json
 import requests
 import pyaudio
+import headlines
 
 
 
@@ -149,6 +150,17 @@ if __name__=='__main__':
         elif 'news' in statement:
             news = webbrowser.open_new_tab("https://timesofindia.indiatimes.com/home/headlines")
             speak('Here are some headlines from the Times of India,Happy reading')
+            speak('If you like the headline, say "visit" to open the page and read details')
+            headlines = hdl.get_headlines("https://timesofindia.indiatimes.com/home/headlines")
+            for i in range(15):
+                speak(headlines['text'][i])
+                command = takeCommand()
+                if 'visit' in command:
+                    webbrowser.open_new_tab(headlines['link'][i])
+                    break
+                elif 'stop' in command:
+                    break
+                time.sleep(5)
             time.sleep(6)
 
         elif "camera" in statement or "take a photo" in statement:
