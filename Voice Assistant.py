@@ -107,6 +107,40 @@ if __name__=='__main__':
             webbrowser.open("amazon.com")
             speak("here you are sir")
             
+        elif 'online courses' in statement:
+            platforms=['Coursera','Udemy','edx','SkillShare','Datacamp','udacity']
+            speak("Select a platform that you prefer:")
+            print(platforms)
+            statement1 = takeCommand().lower()
+            if(statement1 == 0):
+                continue
+            if 'coursera' in statement1:
+                webbrowser.open_new_tab("https://www.coursera.org")
+                speak("Coursera is open now")
+                time.sleep(2)
+            elif 'udemy' in statement1:
+                webbrowser.open_new_tab("https://www.udemy.com")
+                speak("udemy is open now")
+                time.sleep(2)    
+            elif 'edx' in statement1:
+                webbrowser.open_new_tab("https://www.edx.org/")
+                speak("edx is open now")
+                time.sleep(2)
+            elif 'skillshare' in statement1:
+                webbrowser.open_new_tab("https://www.skillshare.com")
+                speak("skill share is open now")
+                time.sleep(2)
+            elif 'datacamp' in statement1:
+                webbrowser.open_new_tab("https://www.datacamp.com")
+                speak("datacamp is open now")
+                time.sleep(2)
+            elif 'udacity' in statement1:
+                webbrowser.open_new_tab("https://www.udacity.com")
+                speak("udacity is open now")
+                time.sleep(2) 
+            else:
+                speak("Sorry we couldn't find your search!!!")                       
+            time.sleep(3)    
 
         elif "weather" in statement:
             api_key = "8ef61edcf1c576d65d836254e11ea420"
