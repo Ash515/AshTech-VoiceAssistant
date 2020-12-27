@@ -12,8 +12,15 @@ import json
 import requests
 import pyaudio
 import headlines
+import getpass
 
-
+pyttsx3.speak("Enter your password")
+inpass = getpass.getpass ("Enter your password :")
+apass = "ashwin"
+if inpass!=apass:
+    pyttsx3.speak("Incorrect Password Try Again ")
+    exit()
+pyttsx3.speak("Access Granted")
 
 
 print("Loading your AI personal assistant - Ashtech ")
