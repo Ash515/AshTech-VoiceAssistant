@@ -108,7 +108,7 @@ if __name__=='__main__':
             speak("here you are sir")
             
         elif 'online courses' in statement:
-            platforms=['Coursera','Udemy','edx','Linkedin Learning','SkillShare','Datacamp','udacity']
+            platforms=['Coursera','Udemy','edx','SkillShare','Datacamp','udacity']
             speak("Select a platform that you prefer:")
             print(platforms)
             statement1 = takeCommand().lower()
