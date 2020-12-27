@@ -110,8 +110,14 @@ if __name__=='__main__':
             time.sleep(5)
                 
         elif "shoping" in statement:
-            speak("nice mood sir")
-            webbrowser.open("amazon.com")
+            websites = ['amazon', 'flipkart', 'myntra']
+            speak("nice mood sir!, what do you want to open?")
+            user_ip = takeCommand().lower()
+
+            for website in websites:
+                if website in user_ip:
+                    webbrowser.open(website + '.com')
+                    
             speak("here you are sir")
             
         elif 'online courses' in statement:
