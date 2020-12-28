@@ -235,6 +235,18 @@ if __name__=='__main__':
             print(answer)
 
 
+        elif 'what is my current location' in statement or 'what is my location' in statement or 'where am I' in statement:
+            ip = "https://api.ipify.org/"
+            ip_r = requests.get(ip).text
+            
+            geoip = "http://ip-api.com/json/"+ip_r
+            geo_r = requests.get(geoip)
+            geo_json = geo_r.json()
+
+            print(f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}")
+            speak(f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}")
+
+
         elif "log off" in statement or "sign out" in statement:
             speak("Ok , your pc will log off in 10 sec make sure you exit from all applications")
             subprocess.call(["shutdown", "/l"])
