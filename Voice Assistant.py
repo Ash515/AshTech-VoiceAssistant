@@ -1,3 +1,4 @@
+import pyjokes as pyjokes
 import speech_recognition as sr
 import pyttsx3
 import datetime
@@ -233,6 +234,11 @@ if __name__=='__main__':
             answer = next(res.results).text
             speak(answer)
             print(answer)
+
+        elif 'jokes' in statement or 'joke' in statement:
+            joke = pyjokes.get_joke('en', 'all')
+            print(joke)
+            speak(joke)
 
 
         elif 'what is my current location' in statement or 'what is my location' in statement or 'where am I' in statement:
