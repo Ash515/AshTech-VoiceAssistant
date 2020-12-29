@@ -79,8 +79,8 @@ if __name__ == '__main__':
             continue
 
         if "good bye" in statement or "ok bye" in statement or "stop" in statement:
-            speak('your personal assistant Ashtech is shutting down,Good bye')
-            print('your personal assistant Ashtech  is shutting down,Good bye')
+            print('your personal assistant Ashtech is shutting down, Good bye')
+            speak('your personal assistant Ashtech  is shutting down, Good bye')
             break
 
         if 'wikipedia' in statement:
@@ -123,13 +123,13 @@ if __name__ == '__main__':
 
             speak("here you are sir")
 
-        elif 'online courses' in statement:
-            platforms = ['Coursera', 'Udemy', 'edx',
-                         'SkillShare', 'Datacamp', 'udacity']
-            speak("Select a platform that you prefer:")
-            print(platforms)
+        elif 'online courses' in statement or 'course' in statement:
+            platforms = ['coursera', 'udemy', 'edx',
+                         'skillshare', 'datacamp', 'udacity']
+            speak("Select a platform that you prefer : ")
+            print("\n".join(platforms))
             statement1 = takeCommand().lower()
-            if(statement1 == 0):
+            if statement1 == 0:
                 continue
             if 'coursera' in statement1:
                 webbrowser.open_new_tab("https://www.coursera.org")
@@ -157,9 +157,6 @@ if __name__ == '__main__':
                 time.sleep(2)
             else:
                 speak("Sorry we couldn't find your search!!!")
-            time.sleep(3)
-
-                speak("Sorry we couldn't find your search!!!")                       
             time.sleep(3)
         
         elif 'jobs' in statement or 'job' in statement or 'job recommandation' in statement or 'work' in statement:
@@ -207,13 +204,13 @@ if __name__ == '__main__':
                 current_humidiy = y["humidity"]
                 z = x["weather"]
                 weather_description = z[0]["description"]
-                speak(" Temperature in kelvin unit is " +
+                print(" Temperature in kelvin unit is " +
                       str(current_temperature) +
                       "\n humidity in percentage is " +
                       str(current_humidiy) +
                       "\n description  " +
                       str(weather_description))
-                print(" Temperature in kelvin unit = " +
+                speak(" Temperature in kelvin unit = " +
                       str(current_temperature) +
                       "\n humidity (in percentage) = " +
                       str(current_humidiy) +
@@ -222,6 +219,7 @@ if __name__ == '__main__':
 
         elif 'time' in statement:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
+            print(f"the time is {strTime}")
             speak(f"the time is {strTime}")
 
         elif 'who are you' in statement or 'what can you do' in statement:
@@ -286,6 +284,29 @@ if __name__ == '__main__':
             print(f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}")
             speak(f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}")
 
+        elif "word" in statement:
+            speak("Opening Microsoft Word")
+            os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office\\Microsoft Word 2010.lnk')
+
+        elif "excel" in statement:
+            speak("Opening Microsoft Excel")
+            os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office\\Microsoft Excel 2010.lnk')
+
+        elif "outlook" in statement or "out look" in statement:
+            speak("Opening Microsoft Outlook")
+            os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office\\Microsoft Outlook 2010.lnk')
+
+        elif "publisher" in statement:
+            speak("Opening Microsoft Publisher")
+            os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office\\Microsoft Publisher 2010.lnk')
+
+        elif "powerpoint" in statement or "ppt" in statement:
+            speak("Opening Microsoft Powerpoint")
+            os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office\\Microsoft Powerpoint 2010.lnk')
+
+        elif "onenote" in statement:
+            speak("Opening Microsoft Onenote")
+            os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office\\Microsoft Onenote 2010.lnk')
 
         elif "log off" in statement or "sign out" in statement:
             speak(
