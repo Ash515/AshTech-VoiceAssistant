@@ -154,8 +154,39 @@ if __name__=='__main__':
                 time.sleep(2) 
             else:
                 speak("Sorry we couldn't find your search!!!")                       
-            time.sleep(3)    
-
+            time.sleep(3)
+        
+        elif 'jobs' in statement or 'job' in statement or 'job recommandation' in statement or 'work' in statement:
+            platforms=['LinkedIn','Indeed','Glassdoor','HackerRank','Naukri']
+            speak("Select a platform that you prefer:")
+            print(platforms)
+            statement1 = takeCommand().lower()
+            if(statement1 == 0):
+                continue
+            if 'LinkedIn' in statement1:
+                webbrowser.open_new_tab("https://www.linkedin.com/jobs")
+                speak("LinkedIn is open now")
+                time.sleep(2)
+            elif 'Indeed' in statement1:
+                webbrowser.open_new_tab("https://www.indeed.com/jobs")
+                speak("Indeed is open now")
+                time.sleep(2)
+            elif 'Glassdoor' in statement1:
+                webbrowser.open_new_tab("https://www.glassdoor.com/jobs")
+                speak("Glassdoor is open now")
+                time.sleep(2)
+            elif 'HackerRank' in statement1:
+                webbrowser.open_new_tab("https://www.hackerrank.com/jobs/search")
+                speak("HackerRank is open now")
+                time.sleep(2)
+            elif 'Naukri' in statement1:
+                webbrowser.open_new_tab("https://www.naukri.com/jobs")
+                speak("Naukri is open now")
+                time.sleep(2)
+            else:
+                speak("Sorry we couldn't find your search!!!")
+            time.sleep(3)
+        
         elif "weather" in statement:
             api_key = "8ef61edcf1c576d65d836254e11ea420"
             base_url = "https://api.openweathermap.org/data/2.5/weather?"
