@@ -114,6 +114,7 @@ if __name__ == '__main__':
 
         elif "shoping" in statement or 'shopping' in statement:
             websites = ['amazon', 'flipkart', 'myntra', 'limeroad']
+            print('\n'.join(websites))
             speak("nice mood sir!, what do you want to open?")
             user_ip = takeCommand().lower().replace(' ', '')
 
