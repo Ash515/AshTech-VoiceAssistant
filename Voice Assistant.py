@@ -74,6 +74,7 @@ if __name__ == '__main__':
     while True:
         speak("Tell me how can I help you now?")
         statement = takeCommand().lower()
+
         if statement == 0:
             continue
 
@@ -273,26 +274,6 @@ if __name__ == '__main__':
             speak(answer)
             print(answer)
 
-        elif 'notepad' or 'editor' or 'text editor' in statement:
-            os.system("notepad newFile.txt")
-            speak("Notepad open now")
-            time.sleep(5)
-
-        elif 'word' or 'document editor' or 'wordpad' in statement:
-            os.system("write")
-            speak("Wordpad open now")
-            time.sleep(5)
-
-        elif 'paint' or 'draw' or 'sketch' in statement:
-            os.system("mspaint")
-            speak("MS Paint open now")
-            time.sleep(5)
-            
-        elif 'jokes' in statement or 'joke' in statement:
-            joke = pyjokes.get_joke('en', 'all')
-            print(joke)
-            speak(joke)
-
 
         elif 'what is my current location' in statement or 'what is my location' in statement or 'where am I' in statement:
             ip = "https://api.ipify.org/"
@@ -304,6 +285,7 @@ if __name__ == '__main__':
 
             print(f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}")
             speak(f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}")
+
 
         elif "log off" in statement or "sign out" in statement:
             speak(
