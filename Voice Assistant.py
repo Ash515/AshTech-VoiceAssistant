@@ -112,10 +112,10 @@ if __name__ == '__main__':
             speak("covid-19 tracker is open now")
             time.sleep(5)
 
-        elif "shoping" in statement:
-            websites = ['amazon', 'flipkart', 'myntra']
+        elif "shoping" in statement or 'shopping' in statement:
+            websites = ['amazon', 'flipkart', 'myntra', 'limeroad']
             speak("nice mood sir!, what do you want to open?")
-            user_ip = takeCommand().lower()
+            user_ip = takeCommand().lower().replace(' ', '')
 
             for website in websites:
                 if website in user_ip:
@@ -160,9 +160,9 @@ if __name__ == '__main__':
             time.sleep(3)
         
         elif 'jobs' in statement or 'job' in statement or 'job recommandation' in statement or 'work' in statement:
-            platforms=['LinkedIn','Indeed','Glassdoor','HackerRank','Naukri']
+            platforms = ['linkedin', 'indeed', 'glassdoor', 'hackerrank', 'naukri', 'intern shala']
             speak("Select a platform that you prefer:")
-            print(platforms)
+            print('\n'.join(platforms))
             statement1 = takeCommand().lower()
             if(statement1 == 0):
                 continue
@@ -185,6 +185,10 @@ if __name__ == '__main__':
             elif 'Naukri' in statement1:
                 webbrowser.open_new_tab("https://www.naukri.com/jobs")
                 speak("Naukri is open now")
+                time.sleep(2)
+            elif 'intern shala' in statement:
+                webbrowser.open_new_tab('internshala.com')
+                speak('Intern Shala is open now')
                 time.sleep(2)
             else:
                 speak("Sorry we couldn't find your search!!!")
