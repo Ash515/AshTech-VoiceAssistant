@@ -16,9 +16,9 @@ import headlines
 import getpass
 
 pyttsx3.speak("Enter your password")
-inpass = getpass.getpass ("Enter your password :")
+inpass = getpass.getpass("Enter your password :")
 apass = "ashwin"
-if inpass!=apass:
+if inpass != apass:
     pyttsx3.speak("Incorrect Password Try Again ")
     exit()
 pyttsx3.speak("Access Granted")
@@ -26,35 +26,37 @@ pyttsx3.speak("Access Granted")
 
 print("Loading your AI personal assistant - Ashtech ")
 
-engine=pyttsx3.init('sapi5')
-voices=engine.getProperty('voices')
-engine.setProperty('voice','voices[0].id')
+engine = pyttsx3.init('sapi5')
+voices = engine.getProperty('voices')
+engine.setProperty('voice', 'voices[0].id')
 
 
 def speak(text):
     engine.say(text)
     engine.runAndWait()
 
+
 def wishMe():
-    hour=datetime.datetime.now().hour
-    if hour>=0 and hour<12:
+    hour = datetime.datetime.now().hour
+    if hour >= 0 and hour < 12:
         speak("Hello,Good Morning")
         print("Hello,Good Morning")
-    elif hour>=12 and hour<18:
+    elif hour >= 12 and hour < 18:
         speak("Hello,Good Afternoon")
         print("Hello,Good Afternoon")
     else:
         speak("Hello,Good Evening")
         print("Hello,Good Evening")
 
+
 def takeCommand():
-    r=sr.Recognizer()
+    r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening...")
-        audio=r.listen(source)
+        audio = r.listen(source)
 
         try:
-            statement=r.recognize_google(audio,language='en-in')
+            statement = r.recognize_google(audio, language='en-in')
             print(f"user said:{statement}\n")
 
         except Exception as e:
@@ -62,17 +64,17 @@ def takeCommand():
             return "None"
         return statement
 
+
 speak("Loading your AI personal assistant AshTech")
 wishMe()
 
 
-if __name__=='__main__':
-
+if __name__ == '__main__':
 
     while True:
         speak("Tell me how can I help you now?")
         statement = takeCommand().lower()
-        if statement==0:
+        if statement == 0:
             continue
 
         if "good bye" in statement or "ok bye" in statement or "stop" in statement:
@@ -80,11 +82,9 @@ if __name__=='__main__':
             print('your personal assistant Ashtech  is shutting down,Good bye')
             break
 
-
-
         if 'wikipedia' in statement:
             speak('Searching Wikipedia...')
-            statement =statement.replace("wikipedia", "")
+            statement = statement.replace("wikipedia", "")
             results = wikipedia.summary(statement, sentences=3)
             speak("According to Wikipedia")
             print(results)
@@ -106,10 +106,11 @@ if __name__=='__main__':
             time.sleep(5)
 
         elif 'covid-19 tracker' in statement:
-            webbrowser.open_new_tab("https://news.google.com/covid19/map?hl=en-IN&gl=IN&ceid=IN%3Aen")
+            webbrowser.open_new_tab(
+                "https://news.google.com/covid19/map?hl=en-IN&gl=IN&ceid=IN%3Aen")
             speak("covid-19 tracker is open now")
             time.sleep(5)
-                
+
         elif "shoping" in statement:
             websites = ['amazon', 'flipkart', 'myntra']
             speak("nice mood sir!, what do you want to open?")
@@ -118,11 +119,12 @@ if __name__=='__main__':
             for website in websites:
                 if website in user_ip:
                     webbrowser.open(website + '.com')
-                    
+
             speak("here you are sir")
-            
+
         elif 'online courses' in statement:
-            platforms=['Coursera','Udemy','edx','SkillShare','Datacamp','udacity']
+            platforms = ['Coursera', 'Udemy', 'edx',
+                         'SkillShare', 'Datacamp', 'udacity']
             speak("Select a platform that you prefer:")
             print(platforms)
             statement1 = takeCommand().lower()
@@ -135,7 +137,7 @@ if __name__=='__main__':
             elif 'udemy' in statement1:
                 webbrowser.open_new_tab("https://www.udemy.com")
                 speak("udemy is open now")
-                time.sleep(2)    
+                time.sleep(2)
             elif 'edx' in statement1:
                 webbrowser.open_new_tab("https://www.edx.org/")
                 speak("edx is open now")
@@ -151,8 +153,11 @@ if __name__=='__main__':
             elif 'udacity' in statement1:
                 webbrowser.open_new_tab("https://www.udacity.com")
                 speak("udacity is open now")
-                time.sleep(2) 
+                time.sleep(2)
             else:
+                speak("Sorry we couldn't find your search!!!")
+            time.sleep(3)
+
                 speak("Sorry we couldn't find your search!!!")                       
             time.sleep(3)
         
@@ -215,14 +220,13 @@ if __name__=='__main__':
                       str(weather_description))
 
         elif 'time' in statement:
-            strTime=datetime.datetime.now().strftime("%H:%M:%S")
+            strTime = datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"the time is {strTime}")
 
         elif 'who are you' in statement or 'what can you do' in statement:
             speak('I am Ashwin friend Ashtech version 1 point O your persoanl assistant. I am programmed to minor tasks like'
-                  'opening youtube,google chrome,gmail and stackoverflow ,predict time,take a photo,search wikipedia,predict weather' 
+                  'opening youtube,google chrome,gmail and stackoverflow ,predict time,take a photo,search wikipedia,predict weather'
                   'in different cities , get top headline news from times of india and you can ask me computational or geographical questions too!')
-
 
         elif "who made you" in statement or "who created you" in statement or "who discovered you" in statement:
             speak("I was built by Ashwin Kumar Ramaswamy")
@@ -233,10 +237,13 @@ if __name__=='__main__':
             speak("Here is stackoverflow")
 
         elif 'news' in statement:
-            news = webbrowser.open_new_tab("https://timesofindia.indiatimes.com/home/headlines")
+            news = webbrowser.open_new_tab(
+                "https://timesofindia.indiatimes.com/home/headlines")
             speak('Here are some headlines from the Times of India,Happy reading')
-            speak('If you like the headline, say "visit" to open the page and read details')
-            headlines = hdl.get_headlines("https://timesofindia.indiatimes.com/home/headlines")
+            speak(
+                'If you like the headline, say "visit" to open the page and read details')
+            headlines = hdl.get_headlines(
+                "https://timesofindia.indiatimes.com/home/headlines")
             for i in range(15):
                 speak(headlines['text'][i])
                 command = takeCommand()
@@ -249,7 +256,7 @@ if __name__=='__main__':
             time.sleep(6)
 
         elif "camera" in statement or "take a photo" in statement:
-            ec.capture(0,"robo camera","img.jpg")
+            ec.capture(0, "robo camera", "img.jpg")
 
         elif 'search' in statement:
             statement = statement.replace("search", "")
@@ -258,14 +265,29 @@ if __name__=='__main__':
 
         elif 'ask' in statement:
             speak('I can answer to computational and geographical questions and what question do you want to ask now')
-            question=takeCommand()
-            app_id="R2K75H-7ELALHR35X"
+            question = takeCommand()
+            app_id = "R2K75H-7ELALHR35X"
             client = wolframalpha.Client('R2K75H-7ELALHR35X')
             res = client.query(question)
             answer = next(res.results).text
             speak(answer)
             print(answer)
 
+        elif 'notepad' or 'editor' or 'text editor' in statement:
+            os.system("notepad newFile.txt")
+            speak("Notepad open now")
+            time.sleep(5)
+
+        elif 'word' or 'document editor' or 'wordpad' in statement:
+            os.system("write")
+            speak("Wordpad open now")
+            time.sleep(5)
+
+        elif 'paint' or 'draw' or 'sketch' in statement:
+            os.system("mspaint")
+            speak("MS Paint open now")
+            time.sleep(5)
+            
         elif 'jokes' in statement or 'joke' in statement:
             joke = pyjokes.get_joke('en', 'all')
             print(joke)
@@ -283,9 +305,9 @@ if __name__=='__main__':
             print(f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}")
             speak(f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}")
 
-
         elif "log off" in statement or "sign out" in statement:
-            speak("Ok , your pc will log off in 10 sec make sure you exit from all applications")
+            speak(
+                "Ok , your pc will log off in 10 sec make sure you exit from all applications")
             subprocess.call(["shutdown", "/l"])
 
 time.sleep(3)
