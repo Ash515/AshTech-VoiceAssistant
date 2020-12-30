@@ -289,30 +289,7 @@ if __name__ == '__main__':
             print(f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}")
             speak(f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}")
 
-        elif "word" in statement:
-            speak("Opening Microsoft Word")
-            os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office\\Microsoft Word 2010.lnk')
-
-        elif "excel" in statement:
-            speak("Opening Microsoft Excel")
-            os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office\\Microsoft Excel 2010.lnk')
-
-        elif "outlook" in statement or "out look" in statement:
-            speak("Opening Microsoft Outlook")
-            os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office\\Microsoft Outlook 2010.lnk')
-
-        elif "publisher" in statement:
-            speak("Opening Microsoft Publisher")
-            os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office\\Microsoft Publisher 2010.lnk')
-
-        elif "powerpoint" in statement or "ppt" in statement:
-            speak("Opening Microsoft Powerpoint")
-            os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office\\Microsoft Powerpoint 2010.lnk')
-
-        elif "onenote" in statement:
-            speak("Opening Microsoft Onenote")
-            os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office\\Microsoft Onenote 2010.lnk')
-
+        
         elif "log off" in statement or "sign out" in statement:
             speak(
                 "Ok , your pc will log off in 10 sec make sure you exit from all applications")
