@@ -277,6 +277,17 @@ if __name__ == '__main__':
             speak(answer)
             print(answer)
 
+            
+        elif 'jokes' in statement or 'joke' in statement:
+            joke = pyjokes.get_joke('en', 'all')
+            print(joke)
+            speak(joke)
+
+        elif 'pycharm' in statement or 'open pycharm' in statement:
+            os.startfile('pycharm')
+            speak("pycharm is open now")
+
+
 
         elif 'what is my current location' in statement or 'what is my location' in statement or 'where am I' in statement:
             ip = "https://api.ipify.org/"
