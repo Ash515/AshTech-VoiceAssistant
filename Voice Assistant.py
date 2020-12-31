@@ -14,6 +14,14 @@ import requests
 import pyaudio
 import headlines
 import getpass
+import librosa
+import soundfile
+import numpy as np
+import os, pickle,glob
+from sklearn.model_selection import train_test_split
+from sklearn.neural_network import MLPClassifier
+import pickle
+from scipy.io import wavfile
 
 pyttsx3.speak("Enter your password")
 inpass = getpass.getpass("Enter your password :")
@@ -49,6 +57,28 @@ def wishMe():
         print("Hello,Good Evening")
 
 
+
+def take_First_Command():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening...")
+        audio = r.listen(source)
+
+        with open("audio_file.wav", "wb") as file:
+            file.write(audio.get_wav_data())
+        user_mood()
+
+        try:
+            statement = r.recognize_google(audio, language='en-in')
+            print(f"user said:{statement}\n")
+
+        except Exception as e:
+            speak("Pardon me, please say that again")
+            return "None"
+        return statement
+
+
+
 def takeCommand():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -65,15 +95,59 @@ def takeCommand():
         return statement
 
 
+def user_mood():
+    with soundfile.SoundFile('audio_file.wav') as s_file:
+        x = s_file.read(dtype="float32")
+        sample_rate = s_file.samplerate
+    # x,sample_rate=soundfile.read(s_file)
+        chroma=True
+        mfcc=True
+        mel=True
+        if chroma:
+            stft=np.abs(librosa.stft(x))
+        result=np.array([])
+        if mfcc:
+            mfccs = np.mean(librosa.feature.mfcc(y=x, sr=sample_rate, n_mfcc=40).T, axis=0)
+            result = np.hstack((result, mfccs))
+        if chroma:
+            chroma = np.mean(librosa.feature.chroma_stft(S=stft, sr=sample_rate).T, axis=0)
+            result = np.hstack((result, chroma))
+        if mel:
+            mel = np.mean(librosa.feature.melspectrogram(x, sr=sample_rate).T, axis=0)
+            result = np.hstack((result, mel))
+
+    with open('model.pkl', 'rb') as file:
+        model = pickle.load(file)
+        result=np.array(result)
+        result=result.reshape(180,1)
+        result=result.transpose()
+        pred=model.predict(result)
+        if(pred==1):
+            speak('You seem happy today')
+            print('You seem happy today :)')
+
+        elif(pred==0):
+            speak(' Should I tell you some jokes to make your mood before')
+            print('Should I tell you some jokes to make your mood before')
+            statement1 = takeCommand().lower()
+            if 'yes' in statement1:
+                joke = pyjokes.get_joke('en', 'all')
+                print(joke)
+                speak(joke)
+            else:
+                return
+
+
+
 speak("Loading your AI personal assistant AshTech")
 wishMe()
 
 
 if __name__ == '__main__':
 
+    statement = take_First_Command().lower()
     while True:
-        speak("Tell me how can I help you now?")
-        statement = takeCommand().lower()
+
 
         if statement == 0:
             continue
@@ -246,7 +320,7 @@ if __name__ == '__main__':
             speak('Here are some headlines from the Times of India,Happy reading')
             speak(
                 'If you like the headline, say "visit" to open the page and read details')
-            headlines = hdl.get_headlines(
+            headlines = headlines.get_headlines(
                 "https://timesofindia.indiatimes.com/home/headlines")
             for i in range(15):
                 speak(headlines['text'][i])
@@ -305,5 +379,8 @@ if __name__ == '__main__':
             speak(
                 "Ok , your pc will log off in 10 sec make sure you exit from all applications")
             subprocess.call(["shutdown", "/l"])
+
+        speak("Tell me how can I help you now?")
+        statement = takeCommand().lower()
 
 time.sleep(3)
