@@ -287,7 +287,9 @@ if __name__ == '__main__':
             os.startfile('pycharm')
             speak("pycharm is open now")
 
-
+        elif 'visual studio code' in statement or 'open code' in statement or 'code' in statement or 'visual code' in statement:
+            os.startfile('code')
+            speak('visual studio code is open now')
 
         elif 'what is my current location' in statement or 'what is my location' in statement or 'where am I' in statement:
             ip = "https://api.ipify.org/"
