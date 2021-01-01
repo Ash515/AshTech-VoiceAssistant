@@ -78,7 +78,7 @@ if __name__ == '__main__':
         if statement == 0:
             continue
 
-        if "good bye" in statement or "ok bye" in statement or "stop" in statement:
+        if "good bye" in statement or "ok bye" in statement or "stop" in statement or "quit" in statement or "close" in statement:
             print('your personal assistant Ashtech is shutting down, Good bye')
             speak('your personal assistant Ashtech  is shutting down, Good bye')
             break
@@ -300,7 +300,46 @@ if __name__ == '__main__':
             print(f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}")
             speak(f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}")
 
-        
+        elif "notepad" in statement:
+            speak("Opening Notepad")
+            os.system("start Notepad")
+
+        elif "outlook" in statement:
+            speak("Opening Microsoft Outlook")
+            os.system("start outlook")
+
+        elif "word" in statement:
+            speak("Opening Word")
+            os.system("start winword")
+
+        elif "paint" in statement:
+            speak("Opening Paint")
+            os.system("start mspaint")
+
+        elif "excel" in statement:
+            speak("Opening Excel")
+            os.system("start excel")
+
+        elif "chrome" in statement:
+            speak("Opening Google Chrome")
+            os.system("start chrome")
+
+        elif "power point" in statement or "powerpoint" in statement or "ppt" in statement:
+            speak("Opening Notepad")
+            os.system("start powerpnt")
+
+        elif "edge" in statement:
+            speak("Opening Microsoft Edge")
+            os.system("start msedge")
+
+        elif "snipping tool" in statement:
+            speak("Opening Snipping Tool")
+            os.system("start snippingtool")
+
+        elif "calculator" in statement:
+            speak("Opening Calculator")
+            os.system("start calc")
+
         elif "log off" in statement or "sign out" in statement:
             speak(
                 "Ok , your pc will log off in 10 sec make sure you exit from all applications")
