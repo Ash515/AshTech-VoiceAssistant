@@ -1,4 +1,5 @@
 import pyjokes as pyjokes
+import pywhatkit
 import speech_recognition as sr
 import pyttsx3
 import datetime
@@ -290,6 +291,12 @@ if __name__ == '__main__':
         elif 'visual studio code' in statement or 'open code' in statement or 'code' in statement or 'visual code' in statement:
             os.startfile('code')
             speak('visual studio code is open now')
+
+        elif 'on youtube' in statement or 'youtube' in statement:
+            statement = statement.replace("youtube", "")
+            pywhatkit.playonyt(statement)
+            speak('here you are sir!')
+            time.sleep(120)
 
         elif 'what is my current location' in statement or 'what is my location' in statement or 'where am I' in statement:
             ip = "https://api.ipify.org/"
