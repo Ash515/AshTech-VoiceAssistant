@@ -14,6 +14,12 @@ import requests
 import pyaudio
 import headlines
 import getpass
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 
 pyttsx3.speak("Enter your password")
 inpass = getpass.getpass("Enter your password :")
@@ -305,5 +311,48 @@ if __name__ == '__main__':
             speak(
                 "Ok , your pc will log off in 10 sec make sure you exit from all applications")
             subprocess.call(["shutdown", "/l"])
+#Writing notes            
+        elif "write a note" in query:
+            speak("What should i write, sir")
+            print("J: What should i write, sir")
+            note = takeCommand()
+            file = open('jarvis.txt', 'w')
+            speak("Sir, Should i include date and time")
+            print("J: Sir, Should i include date and time")
+            snfm = takeCommand()
+            if 'yes' in snfm or 'sure' in snfm:
+                strTime = datetime.datetime.now()
+                file.write(strTime)
+                file.write(" :- ")
+                file.write(note)
+            else:
+                file.write(note)
+#Showing note
+        elif "show the note" in query:
+            speak("Showing Notes")
+            print("J: Showing Notes")
+            file = open("jarvis.txt", "r")
+            print(file.read())
+            speak(file.read(6))
+            
+#whatsapp messaging
+        elif 'whatsapp' in query:
+            try:
+                print("J: To whom should i send? Can you please type in the name.")
+                speak("To whom should i send? Can you please type in the name.")
+                to = input('Name: ')
+                print("J: What should i send? Can you please type in the message.")
+                speak("What should i send? Can you please type in the message.")
+                content = input("Enter the message: ")
+                speak('You will have to scan for whatsapp web. ')
+                print('J: You will have to scan for whatsapp web. ')
+                whatsapp(to, content)
+                speak("Message has been sent !")
+                print("* J: Message has been sent !")
+            except Exception as e:
+                print(e)
+                speak("I am not able to send this message")
+            
+        
 
 time.sleep(3)
