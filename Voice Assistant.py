@@ -7,13 +7,19 @@ import webbrowser
 import os
 import time
 import subprocess
-from ecapture import ecapture as ec
+import ecapture as ec
 import wolframalpha
 import json
 import requests
 import pyaudio
 import headlines
 import getpass
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 import librosa
 import soundfile
 import numpy as np
@@ -22,6 +28,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 import pickle
 from scipy.io import wavfile
+
 
 pyttsx3.speak("Enter your password")
 inpass = getpass.getpass("Enter your password :")
@@ -93,6 +100,29 @@ def takeCommand():
             speak("Pardon me, please say that again")
             return "None"
         return statement
+    
+    
+def whatsapp(to, message):
+    person = [to]
+    string = message
+    chrome_driver_binary = "C:\\Program Files\\Google\\Chrome\\Application\\chromedriver.exe"
+    # Selenium chromedriver path
+    driver = webdriver.Chrome(chrome_driver_binary)
+    driver.get("https://web.whatsapp.com/")
+    #wait = WebDriverWait(driver,10)
+    sleep(15)
+    for name in person:
+        print('IN')
+        user = driver.find_element_by_xpath("//span[@title='{}']".format(name))
+        user.click()
+        print(user)
+        for _ in range(10):
+            text_box = driver.find_element_by_xpath(
+                '//*[@id="main"]/footer/div[1]/div[2]/div/div[2]')
+            text_box.send_keys(string)
+            sendbutton = driver.find_elements_by_xpath(
+                '//*[@id="main"]/footer/div[1]/div[3]/button')[0]
+            sendbutton.click()
 
 
 def user_mood():
@@ -418,6 +448,49 @@ if __name__ == '__main__':
             speak(
                 "Ok , your pc will log off in 10 sec make sure you exit from all applications")
             subprocess.call(["shutdown", "/l"])
+#Writing notes            
+        elif "write a note" in statement:
+            speak("What should i write, sir")
+            print("J: What should i write, sir")
+            note = takeCommand()
+            file = open('jarvis.txt', 'w')
+            speak("Sir, Should i include date and time")
+            print("J: Sir, Should i include date and time")
+            snfm = takeCommand()
+            if 'yes' in snfm or 'sure' in snfm:
+                strTime = datetime.datetime.now()
+                file.write(strTime)
+                file.write(" :- ")
+                file.write(note)
+            else:
+                file.write(note)
+#Showing note
+        elif "show the note" in statement:
+            speak("Showing Notes")
+            print("J: Showing Notes")
+            file = open("jarvis.txt", "r")
+            print(file.read())
+            speak(file.read(6))
+            
+#whatsapp messaging
+        elif 'whatsapp' in statement:
+            try:
+                print("J: To whom should i send? Can you please type in the name.")
+                speak("To whom should i send? Can you please type in the name.")
+                to = input('Name: ')
+                print("J: What should i send? Can you please type in the message.")
+                speak("What should i send? Can you please type in the message.")
+                content = input("Enter the message: ")
+                speak('You will have to scan for whatsapp web. ')
+                print('J: You will have to scan for whatsapp web. ')
+                whatsapp(to, content)
+                speak("Message has been sent !")
+                print("* J: Message has been sent !")
+            except Exception as e:
+                print(e)
+                speak("I am not able to send this message")
+            
+        
 
         speak("Tell me how can I help you now?")
         statement = takeCommand().lower()
