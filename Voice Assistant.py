@@ -272,23 +272,23 @@ if __name__ == '__main__':
             statement1 = takeCommand().lower()
             if(statement1 == 0):
                 continue
-            if 'LinkedIn' in statement1:
+            if 'linkedIn' in statement1:
                 webbrowser.open_new_tab("https://www.linkedin.com/jobs")
                 speak("LinkedIn is open now")
                 time.sleep(2)
-            elif 'Indeed' in statement1:
+            elif 'indeed' in statement1:
                 webbrowser.open_new_tab("https://www.indeed.com/jobs")
                 speak("Indeed is open now")
                 time.sleep(2)
-            elif 'Glassdoor' in statement1:
+            elif 'glassdoor' in statement1:
                 webbrowser.open_new_tab("https://www.glassdoor.com/jobs")
                 speak("Glassdoor is open now")
                 time.sleep(2)
-            elif 'HackerRank' in statement1:
+            elif 'hackerrank' in statement1:
                 webbrowser.open_new_tab("https://www.hackerrank.com/jobs/search")
                 speak("HackerRank is open now")
                 time.sleep(2)
-            elif 'Naukri' in statement1:
+            elif 'naukri' in statement1:
                 webbrowser.open_new_tab("https://www.naukri.com/jobs")
                 speak("Naukri is open now")
                 time.sleep(2)
@@ -453,11 +453,16 @@ if __name__ == '__main__':
             speak("Opening Calculator")
             os.system("start calc")
 
+        elif 'recycle bin' in statement or 'deleted files' in statement:
+            speak('Opening recycling bin')
+            os.system('start shell:RecycleBinFolder')
+
         elif "log off" in statement or "sign out" in statement:
             speak(
                 "Ok , your pc will log off in 10 sec make sure you exit from all applications")
             subprocess.call(["shutdown", "/l"])
-#Writing notes            
+
+        #Writing notes
         elif "write a note" in statement:
             speak("What should i write, sir")
             print("J: What should i write, sir")
@@ -473,7 +478,8 @@ if __name__ == '__main__':
                 file.write(note)
             else:
                 file.write(note)
-#Showing note
+
+        #Showing note
         elif "show the note" in statement:
             speak("Showing Notes")
             print("J: Showing Notes")
@@ -481,7 +487,7 @@ if __name__ == '__main__':
             print(file.read())
             speak(file.read(6))
             
-#whatsapp messaging
+        #whatsapp messaging
         elif 'whatsapp' in statement:
             try:
                 print("J: To whom should i send? Can you please type in the name.")
