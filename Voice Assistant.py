@@ -448,7 +448,11 @@ if __name__ == '__main__':
         elif "snipping tool" in statement:
             speak("Opening Snipping Tool")
             os.system("start snippingtool")
-
+                  
+        elif "show deleted files" in statement or "Recycle Bin" in statement or "Delete files" in statement:
+            speak("Opening Recycle Bin")
+            os.system("start shell:RecycleBinFolder")
+                  
         elif "calculator" in statement:
             speak("Opening Calculator")
             os.system("start calc")
@@ -505,3 +509,5 @@ if __name__ == '__main__':
         statement = takeCommand().lower()
 
 time.sleep(3)
+
+     
