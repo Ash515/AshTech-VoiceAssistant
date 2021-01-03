@@ -449,7 +449,7 @@ if __name__ == '__main__':
             speak("Opening Snipping Tool")
             os.system("start snippingtool")
                   
-        elif "show deleted files" in statement or "Recycle Bin" in statement or "Delete files" in statement:
+        elif "show deleted files" in statement or "Recycle Bin" in statement or "Delete files" in statement or "search deleted files" in statement:
             speak("Opening Recycle Bin")
             os.system("start shell:RecycleBinFolder")
                   
