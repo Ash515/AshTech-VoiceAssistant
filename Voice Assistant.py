@@ -20,6 +20,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+import librosa
+import soundfile
+import numpy as np
+import os, pickle,glob
+from sklearn.model_selection import train_test_split
+from sklearn.neural_network import MLPClassifier
+import pickle
+from scipy.io import wavfile
+
 
 pyttsx3.speak("Enter your password")
 inpass = getpass.getpass("Enter your password :")
@@ -53,6 +62,28 @@ def wishMe():
     else:
         speak("Hello,Good Evening")
         print("Hello,Good Evening")
+
+
+
+def take_First_Command():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening...")
+        audio = r.listen(source)
+
+        with open("audio_file.wav", "wb") as file:
+            file.write(audio.get_wav_data())
+        user_mood()
+
+        try:
+            statement = r.recognize_google(audio, language='en-in')
+            print(f"user said:{statement}\n")
+
+        except Exception as e:
+            speak("Pardon me, please say that again")
+            return "None"
+        return statement
+
 
 
 def takeCommand():
@@ -94,20 +125,64 @@ def whatsapp(to, message):
             sendbutton.click()
 
 
+def user_mood():
+    with soundfile.SoundFile('audio_file.wav') as s_file:
+        x = s_file.read(dtype="float32")
+        sample_rate = s_file.samplerate
+    # x,sample_rate=soundfile.read(s_file)
+        chroma=True
+        mfcc=True
+        mel=True
+        if chroma:
+            stft=np.abs(librosa.stft(x))
+        result=np.array([])
+        if mfcc:
+            mfccs = np.mean(librosa.feature.mfcc(y=x, sr=sample_rate, n_mfcc=40).T, axis=0)
+            result = np.hstack((result, mfccs))
+        if chroma:
+            chroma = np.mean(librosa.feature.chroma_stft(S=stft, sr=sample_rate).T, axis=0)
+            result = np.hstack((result, chroma))
+        if mel:
+            mel = np.mean(librosa.feature.melspectrogram(x, sr=sample_rate).T, axis=0)
+            result = np.hstack((result, mel))
+
+    with open('model.pkl', 'rb') as file:
+        model = pickle.load(file)
+        result=np.array(result)
+        result=result.reshape(180,1)
+        result=result.transpose()
+        pred=model.predict(result)
+        if(pred==1):
+            speak('You seem happy today')
+            print('You seem happy today :)')
+
+        elif(pred==0):
+            speak(' Should I tell you some jokes to make your mood before')
+            print('Should I tell you some jokes to make your mood before')
+            statement1 = takeCommand().lower()
+            if 'yes' in statement1:
+                joke = pyjokes.get_joke('en', 'all')
+                print(joke)
+                speak(joke)
+            else:
+                return
+
+
+
 speak("Loading your AI personal assistant AshTech")
 wishMe()
 
 
 if __name__ == '__main__':
 
+    statement = take_First_Command().lower()
     while True:
-        speak("Tell me how can I help you now?")
-        statement = takeCommand().lower()
+
 
         if statement == 0:
             continue
 
-        if "good bye" in statement or "ok bye" in statement or "stop" in statement:
+        if "good bye" in statement or "ok bye" in statement or "stop" in statement or "quit" in statement or "close" in statement:
             print('your personal assistant Ashtech is shutting down, Good bye')
             speak('your personal assistant Ashtech  is shutting down, Good bye')
             break
@@ -275,7 +350,7 @@ if __name__ == '__main__':
             speak('Here are some headlines from the Times of India,Happy reading')
             speak(
                 'If you like the headline, say "visit" to open the page and read details')
-            headlines = hdl.get_headlines(
+            headlines = headlines.get_headlines(
                 "https://timesofindia.indiatimes.com/home/headlines")
             for i in range(15):
                 speak(headlines['text'][i])
@@ -329,7 +404,46 @@ if __name__ == '__main__':
             print(f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}")
             speak(f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}")
 
-        
+        elif "notepad" in statement:
+            speak("Opening Notepad")
+            os.system("start Notepad")
+
+        elif "outlook" in statement:
+            speak("Opening Microsoft Outlook")
+            os.system("start outlook")
+
+        elif "word" in statement:
+            speak("Opening Word")
+            os.system("start winword")
+
+        elif "paint" in statement:
+            speak("Opening Paint")
+            os.system("start mspaint")
+
+        elif "excel" in statement:
+            speak("Opening Excel")
+            os.system("start excel")
+
+        elif "chrome" in statement:
+            speak("Opening Google Chrome")
+            os.system("start chrome")
+
+        elif "power point" in statement or "powerpoint" in statement or "ppt" in statement:
+            speak("Opening Notepad")
+            os.system("start powerpnt")
+
+        elif "edge" in statement:
+            speak("Opening Microsoft Edge")
+            os.system("start msedge")
+
+        elif "snipping tool" in statement:
+            speak("Opening Snipping Tool")
+            os.system("start snippingtool")
+
+        elif "calculator" in statement:
+            speak("Opening Calculator")
+            os.system("start calc")
+
         elif "log off" in statement or "sign out" in statement:
             speak(
                 "Ok , your pc will log off in 10 sec make sure you exit from all applications")
@@ -377,5 +491,8 @@ if __name__ == '__main__':
                 speak("I am not able to send this message")
             
         
+
+        speak("Tell me how can I help you now?")
+        statement = takeCommand().lower()
 
 time.sleep(3)
