@@ -452,11 +452,7 @@ if __name__ == '__main__':
         elif "calculator" in statement:
             speak("Opening Calculator")
             os.system("start calc")
-
-        elif 'recycle bin' in statement or 'deleted files' in statement:
-            speak('Opening recycling bin')
-            os.system('start shell:RecycleBinFolder')
-
+                  
         elif "log off" in statement or "sign out" in statement:
             speak(
                 "Ok , your pc will log off in 10 sec make sure you exit from all applications")
