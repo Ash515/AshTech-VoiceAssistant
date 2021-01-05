@@ -15,7 +15,17 @@ A voice assistant is a digital assistant that uses voice recognition, speech syn
 - Searching 🔎 
 - Opening websites like Wikipedia, Stack Overflow, Github etc. 👨‍💻
 - Capturing images. 📸 
-- Predicts time, date, weather report etc.💡🔎
+- Predicts time, date, weather report etc. 💡🔎
+- Search Videos on [Youtube](https://www.youtube.com/) :mag:
+- Open any Operating System files like MS-Word, MS-Excel, Notepad, etc :desktop_computer:
+- Say Jokes :grin:
+- Help in Shopping :shopping_cart:
+- Find out Jobs :briefcase:
+- Search [Wikipedia](https://www.wikipedia.org/) :mag:
+- Find Courses :notebook_with_decorative_cover::closed_book:
+- Track COVID-19 :medical_symbol:
+- Password Protected :closed_lock_with_key:
+
 
 ## 🌟 Tech Stacks
 **Python 3.7**
@@ -73,17 +83,6 @@ Thats all about installation and version control with **Git**
 ## :key: Result 
 
 <img src="Output.png" width=800>
-
-## :memo: Features
-&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech can search anything on [Youtube](https://www.youtube.com/)**<br>
-&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech can open any Operating System files like MS-Word, MS-Excel, Notepad, etc** <br>
-&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech can refresh your mood by saying some jokes** <br>
-&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech can enhance your mood by helping in shopping** <br>
-&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech can help you out with job searches** <br>
-&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech can help you find courses** <br>
-&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech can open some of the websites** <br>
-&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech can also track COVID-19 cases around you location** <br>
-&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech is Password protected** <br>
 
 ## Contribution Programmes
 
