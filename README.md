@@ -74,6 +74,17 @@ Thats all about installation and version control with **Git**
 
 <img src="Output.png" width=800>
 
+## :memo: Features
+&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech can search anything on [Youtube](https://www.youtube.com/)**<br>
+&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech can open any Operating System files like MS-Word, MS-Excel, Notepad, etc** <br>
+&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech can refresh your mood by saying some jokes** <br>
+&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech can enhance your mood by helping in shopping** <br>
+&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech can help you out with job searches** <br>
+&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech can help you find courses** <br>
+&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech can open some of the websites** <br>
+&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech can also track COVID-19 cases around you location** <br>
+&nbsp; &nbsp; **:white_check_mark:&nbsp; &nbsp; &nbsp; AshTech is Password protected** <br>
+
 ## Contribution Programmes
 
 <img src="DWOC.jpeg" width=500>
