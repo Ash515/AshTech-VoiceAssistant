@@ -302,8 +302,6 @@ if __name__ == '__main__':
                 speak("Sorry we couldn't find your search!!!")
             time.sleep(3)
 
-
-
         elif 'news' in statement or 'news headline' in statement or 'top news' in statement or 'some news' in statement:
             speak('Here are some headlines from the India today')
 
@@ -320,9 +318,6 @@ if __name__ == '__main__':
                 time.sleep(6)
             time.sleep(8)
 
-
-
-        
         elif "weather" in statement:
             api_key = "8ef61edcf1c576d65d836254e11ea420"
             base_url = "https://api.openweathermap.org/data/2.5/weather?"
