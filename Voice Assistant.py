@@ -29,6 +29,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 import pickle
 from scipy.io import wavfile
+from bs4 import BeautifulSoup
+import requests
 
 
 pyttsx3.speak("Enter your password")
@@ -299,7 +301,23 @@ if __name__ == '__main__':
             else:
                 speak("Sorry we couldn't find your search!!!")
             time.sleep(3)
-        
+
+        elif 'news' in statement or 'news headline' in statement or 'top news' in statement or 'some news' in statement:
+            speak('Here are some headlines from the India today')
+
+            res = requests.get('https://www.indiatoday.in/top-stories')
+            soup = BeautifulSoup(res.text, 'lxml')
+
+            news_box = soup.find('div', {'class': 'top-takes-video-container'})
+            all_news = news_box.find_all('p')
+
+            for news in all_news:
+                print('\n'+news.text)
+                speak(news.text)
+                print()
+                time.sleep(6)
+            time.sleep(8)
+
         elif "weather" in statement:
             api_key = "8ef61edcf1c576d65d836254e11ea420"
             base_url = "https://api.openweathermap.org/data/2.5/weather?"

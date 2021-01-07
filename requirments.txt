@@ -4,3 +4,4 @@ wikipedia==1.4.0
 ecapture==0.1.8
 wolframalpha==4.1.1
 PyAudio==0.2.11
+beautifulsoup4
