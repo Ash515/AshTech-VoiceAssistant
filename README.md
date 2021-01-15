@@ -95,6 +95,122 @@ Feel free to mail me for any doubts/query
 ## :heart: Owner
 Made with :heart:&nbsp;  by [Ashwin Kumar R](https://github.com/Ash515)
 
+## Contributors 🌟
+Thanks goes to these wonderful people ✨✨:
+<table>
+	<!--   ROW 1 -->
+	<tr>
+		<td align="center">
+			<a href="https://github.com/Ash515"> <img src="https://avatars3.githubusercontent.com/u/53136674?v=4" width="100px" alt="" />
+				<br /> <sub><b>Ash515</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=Ash515">
+                👑 Author
+            </a> </td>
+		<td align="center">
+			<a href="https://github.com/akrish4"> <img src="https://avatars0.githubusercontent.com/u/61831021?v=4" width="100px" alt="" />
+				<br /> <sub><b>akrish4</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=akrish4">
+                💻
+            </a> </td>
+		<td align="center">
+			<a href="https://github.com/realhunter7869"> <img src="https://avatars0.githubusercontent.com/u/59429408?v=4" width="100px" alt="" />
+				<br /> <sub><b>realhunter7869</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=realhunter7869">
+                💻
+            </a> </td>
+		<td align="center">
+			<a href="https://github.com/Akashdeep-47"> <img src="https://avatars2.githubusercontent.com/u/61601588?v=4" width="100px" alt="" />
+				<br /> <sub><b>Akashdeep-47</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=Akashdeep-47">
+                💻
+            </a> </td>
+		<td align="center">
+			<a href="https://github.com/Jithendra-k"> <img src="https://avatars0.githubusercontent.com/u/66300074?v=4" width="100px" alt="" />
+				<br /> <sub><b>Jithendra-k</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=Jithendra-k">
+                💻
+            </a> </td>
+		<td align="center">
+			<a href="https://github.com/sahebsunny"> <img src="https://avatars3.githubusercontent.com/u/55354715?v=4" width="100px" alt="" />
+				<br /> <sub><b>sahebsunny</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=sahebsunny">
+                💻
+            </a> </td>
+		<td align="center">
+			<a href="https://github.com/Nitesh-thapliyal"> <img src="https://avatars0.githubusercontent.com/u/53345517?v=4" width="100px" alt="" />
+				<br /> <sub><b>Nitesh-thapliyal</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=Nitesh-thapliyal">
+                💻
+            </a> </td>
+	</tr>
+	<!--   ROW 2 -->
+	<tr>
+		<td align="center">
+			<a href="https://github.com/bhavya092"> <img src="https://avatars2.githubusercontent.com/u/64348567?v=4" width="100px" alt="" />
+				<br /> <sub><b>bhavya092</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=bhavya092">
+                💻
+            </a> </td>
+		<td align="center">
+			<a href="https://github.com/abdallah1097"> <img src="https://avatars3.githubusercontent.com/u/32100743?v=4" width="100px" alt="" />
+				<br /> <sub><b>abdallah1097</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=abdallah1097">
+                💻
+            </a> </td>
+		<td align="center">
+			<a href="https://github.com/SubhradeepSS"> <img src="https://avatars2.githubusercontent.com/u/46227193?v=4" width="100px" alt="" />
+				<br /> <sub><b>SubhradeepSS</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=SubhradeepSS">
+                💻
+            </a> </td>
+		<td align="center">
+			<a href="https://github.com/vaishnavi-1"> <img src="https://avatars2.githubusercontent.com/u/62782231?v=4" width="100px" alt="" />
+				<br /> <sub><b>vaishnavi-1</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=vaishnavi-1">
+                💻
+            </a> </td>
+		<td align="center">
+			<a href="https://github.com/Cruel-Crab"> <img src="https://avatars3.githubusercontent.com/u/61859337?v=4" width="100px" alt="" />
+				<br /> <sub><b>Cruel-Crab</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=Cruel-Crab">
+                💻
+            </a> </td>
+		<td align="center">
+			<a href="https://github.com/abdullah20401"> <img src="https://avatars0.githubusercontent.com/u/44303300?v=4" width="100px" alt="" />
+				<br /> <sub><b>abdullah20401</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=abdullah20401">
+                💻
+            </a> </td>
+		<td align="center">
+			<a href="https://github.com/AlexVines"> <img src="https://avatars2.githubusercontent.com/u/68593244?v=4" width="100px" alt="" />
+				<br /> <sub><b>AlexVines</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=AlexVines">
+                💻
+            </a> </td>
+	</tr>
+	<!--   ROW 3 -->
+	<tr>
+		<td align="center">
+			<a href="https://github.com/Bhagyashri2000"> <img src="https://avatars1.githubusercontent.com/u/43903254?v=4" width="100px" alt="" />
+				<br /> <sub><b>Bhagyashri2000</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=Bhagyashri2000">
+                💻
+            </a> </td>
+		<td align="center">
+			<a href="https://github.com/muthuannamalai12"> <img src="https://avatars2.githubusercontent.com/u/64524822?v=4" width="100px" alt="" />
+				<br /> <sub><b>muthuannamalai12</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=muthuannamalai12">
+                💻
+            </a> </td>
+		<td align="center">
+			<a href="https://github.com/saurabhjain17"> <img src="https://avatars0.githubusercontent.com/u/67412687?v=4" width="100px" alt="" />
+				<br /> <sub><b>saurabhjain17</b></sub> </a>
+			<br /> <a href="https://github.com/Jayshah6699/datascience-mashup/commits?author=saurabhjain17">
+                💻
+            </a> </td>
+	</tr>
+</table>
+
 ## :eyes: License
 MIT © [Ashwin Kumar R](https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant./blob/master/LICENSE)
 
