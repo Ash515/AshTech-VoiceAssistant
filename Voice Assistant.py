@@ -332,6 +332,11 @@ if __name__ == '__main__':
             webbrowser.open_new_tab("https://www.redbus.in")
             speak(" Red bus website is open now, have a good journey !")
             time.sleep(2)
+        elif 'airplane ticket booking' in statement or 'airplane booking' in statement or 'airplane ticket' in statement:
+            speak('Here are some top websites for airplane ticket booking')
+            webbrowser.open_new_tab("https://www.goindigo.in")
+            speak(" Indigo website is open now, have a good journey !")
+            time.sleep(2)
             
             
             
