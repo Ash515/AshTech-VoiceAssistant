@@ -317,6 +317,14 @@ if __name__ == '__main__':
                 print()
                 time.sleep(6)
             time.sleep(8)
+        elif 'Movie ticket booking' in statement or 'booking' in statement or 'ticket' in statement:
+            speak('Here are some top websites for ticket booking')
+            webbrowser.open_new_tab("https://in.bookmyshow.com/")
+            speak(" Book my show website is open now")
+            time.sleep(2)
+            
+            
+            
 
         elif "weather" in statement:
             api_key = "8ef61edcf1c576d65d836254e11ea420"
