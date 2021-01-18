@@ -41,7 +41,6 @@ if inpass != apass:
     exit()
 pyttsx3.speak("Access Granted")
 
-
 print("Loading your AI personal assistant - Ashtech ")
 
 engine = pyttsx3.init('sapi5')
@@ -67,7 +66,6 @@ def wishMe():
         print("Hello,Good Evening")
 
 
-
 def take_First_Command():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -88,7 +86,6 @@ def take_First_Command():
         return statement
 
 
-
 def takeCommand():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -97,13 +94,13 @@ def takeCommand():
 
         try:
             statement = r.recognize_google(audio, language='en-in')
-            print(f"user said:{statement}\n")
+            print(f"user said : {statement}\n")
 
         except Exception as e:
             speak("Pardon me, please say that again")
             return "None"
         return statement
-    
+
     
 def whatsapp(to, message):
     person = [to]
@@ -171,16 +168,14 @@ def user_mood():
                 return
 
 
-
 speak("Loading your AI personal assistant AshTech")
 wishMe()
 
 
 if __name__ == '__main__':
 
-    statement = take_First_Command().lower()
+    statement = takeCommand().lower()
     while True:
-
 
         if statement == 0:
             continue
@@ -317,40 +312,46 @@ if __name__ == '__main__':
                 print()
                 time.sleep(6)
             time.sleep(8)
-        elif 'Movie ticket booking' in statement or 'booking' in statement or 'ticket' in statement:
+
+        elif 'movie ticket booking' in statement or 'movie booking' in statement or 'movie ticket' in statement:
             speak('Here are some top websites for ticket booking')
             webbrowser.open_new_tab("https://in.bookmyshow.com/")
             speak(" Book my show website is open now")
             time.sleep(2)
+
         elif 'Train ticket booking' in statement or 'train booking' in statement or 'train ticket' in statement or 'train ticket' in statement:
             speak('Here are some top websites for tarin ticket booking')
             webbrowser.open_new_tab("https://www.easemytrip.com/railways/")
             speak(" Ease My trip website is open now, have a good journey !")
             time.sleep(2)
+
         elif 'bus ticket booking' in statement or 'bus booking' in statement or 'bus ticket' in statement:
             speak('Here are some top websites for bus ticket booking')
             webbrowser.open_new_tab("https://www.redbus.in")
             speak(" Red bus website is open now, have a good journey !")
             time.sleep(2)
+
         elif 'airplane ticket booking' in statement or 'airplane booking' in statement or 'airplane ticket' in statement:
             speak('Here are some top websites for airplane ticket booking')
             webbrowser.open_new_tab("https://www.goindigo.in")
             speak(" Indigo website is open now, have a good journey !")
             time.sleep(2)
-         elif 'Top Engineering colleges in India' in statement or 'Indian Engineering College' in statement or 'Engineering College' in statement:
+
+        elif "hotel" in statement or "hotel booking" in statement:
+            speak('Opening go ibibo .com')
+            webbrowser.open_new_tab('goibibo.com/hotels')
+
+        elif 'Top Engineering colleges in India' in statement or 'Indian Engineering College' in statement or 'Engineering College' in statement:
             speak('Here are some top website for Engineering Colleges in India')
             webbrowser.open_new_tab("https://www.shiksha.com")
             speak(" Shiksha website is opened!")
             time.sleep(2)
-         elif 'Top Medical colleges in India' in statement or 'Indian medical College' in statement or 'medical College' in statement:
+
+        elif 'Top Medical colleges in India' in statement or 'Indian medical College' in statement or 'medical College' in statement:
             speak('Here are some top website for Medical Colleges in India')
             webbrowser.open_new_tab("https://collegedunia.com")
             speak(" College Dunia website is opened!")
             time.sleep(2)
-            
-            
-            
-            
 
         elif "weather" in statement:
             api_key = "8ef61edcf1c576d65d836254e11ea420"
@@ -433,7 +434,6 @@ if __name__ == '__main__':
             answer = next(res.results).text
             speak(answer)
             print(answer)
-
             
         elif 'jokes' in statement or 'joke' in statement:
             joke = pyjokes.get_joke('en', 'all')
@@ -556,12 +556,8 @@ if __name__ == '__main__':
             except Exception as e:
                 print(e)
                 speak("I am not able to send this message")
-            
-        
 
         speak("Tell me how can I help you now?")
         statement = takeCommand().lower()
 
 time.sleep(3)
-
-     
