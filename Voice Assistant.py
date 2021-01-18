@@ -174,7 +174,7 @@ wishMe()
 
 if __name__ == '__main__':
 
-    statement = takeCommand().lower()
+    statement = take_First_Command().lower()
     while True:
 
         if statement == 0:
