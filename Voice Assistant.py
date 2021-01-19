@@ -24,7 +24,7 @@ from selenium.webdriver.common.by import By
 import librosa
 import soundfile
 import numpy as np
-import os, pickle,glob
+import pickle,glob
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 import pickle
@@ -319,7 +319,7 @@ if __name__ == '__main__':
             speak(" Book my show website is open now")
             time.sleep(2)
 
-        elif 'Train ticket booking' in statement or 'train booking' in statement or 'train ticket' in statement or 'train ticket' in statement:
+        elif 'train ticket booking' in statement or 'train booking' in statement or 'train ticket' in statement or 'train ticket' in statement:
             speak('Here are some top websites for tarin ticket booking')
             webbrowser.open_new_tab("https://www.easemytrip.com/railways/")
             speak(" Ease My trip website is open now, have a good journey !")
@@ -341,16 +341,15 @@ if __name__ == '__main__':
             speak('Opening go ibibo .com')
             webbrowser.open_new_tab('goibibo.com/hotels')
 
-        elif 'Top Engineering colleges in India' in statement or 'Indian Engineering College' in statement or 'Engineering College' in statement:
-            speak('Here are some top website for Engineering Colleges in India')
-            webbrowser.open_new_tab("https://www.shiksha.com")
-            speak(" Shiksha website is opened!")
+        elif 'top engineering colleges in india' in statement or 'indian engineering college' in statement or 'engineering college' in statement:
+            webbrowser.open_new_tab("https://www.shiksha.com/b-tech/ranking/top-engineering-colleges-in-india/44-2-0-0-0")
+            speak("Colleges as per NIRF Ranking are open on Shiksha website!")
             time.sleep(2)
 
-        elif 'Top Medical colleges in India' in statement or 'Indian medical College' in statement or 'medical College' in statement:
-            speak('Here are some top website for Medical Colleges in India')
-            webbrowser.open_new_tab("https://collegedunia.com")
-            speak(" College Dunia website is opened!")
+        elif 'top medical colleges in india' in statement or 'indian medical college' in statement or 'medical college' in statement:
+            speak('Here are some top Medical Colleges in India')
+            webbrowser.open_new_tab("https://medicine.careers360.com/colleges/ranking")
+            speak("Colleges as per NIRF rankings are opened!")
             time.sleep(2)
 
         elif "weather" in statement:
