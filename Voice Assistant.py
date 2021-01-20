@@ -337,16 +337,17 @@ if __name__ == '__main__':
             webbrowser.open_new_tab("https://www.goindigo.in")
             speak(" Indigo website is open now, have a good journey !")
             time.sleep(2)
-         elif 'Top Engineering colleges in India' in statement or 'Indian Engineering College' in statement or 'Engineering College' in statement:
-            speak('Here are some top website for Engineering Colleges in India')
-            webbrowser.open_new_tab("https://www.shiksha.com")
-            speak(" Shiksha website is opened!")
-            time.sleep(2)
          elif 'Top Science colleges in India' in statement or 'Indian science College' in statement or 'science College' in statement:
             speak('Here are some top website for Science Colleges in India')
             webbrowser.open_new_tab("https://collegedunia.com/science-colleges")
             speak(" College Dunia website is opened!")
             time.sleep(2)
+         elif 'Top Engineering colleges in India' in statement or 'Indian Engineering College' in statement or 'Engineering College' in statement:
+            speak('Here are some top website for Engineering Colleges in India')
+            webbrowser.open_new_tab("https://www.shiksha.com")
+            speak(" Shiksha website is opened!")
+            time.sleep(2)
+        
          elif 'Top Medical colleges in India' in statement or 'Indian medical College' in statement or 'medical College' in statement:
             speak('Here are some top website for Medical Colleges in India')
             webbrowser.open_new_tab("https://collegedunia.com")
