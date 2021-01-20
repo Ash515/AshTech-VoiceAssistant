@@ -337,23 +337,30 @@ if __name__ == '__main__':
             speak(" Indigo website is open now, have a good journey !")
             time.sleep(2)
 
+
         elif "hotel" in statement or "hotel booking" in statement:
             speak('Opening go ibibo .com')
             webbrowser.open_new_tab('goibibo.com/hotels')
 
         elif 'Top Engineering colleges in India' in statement or 'Indian Engineering College' in statement or 'Engineering College' in statement:
+
             speak('Here are some top website for Engineering Colleges in India')
             webbrowser.open_new_tab("https://www.shiksha.com")
             speak(" Shiksha website is opened!")
             time.sleep(2)
-
         elif 'Top Medical colleges in India' in statement or 'Indian medical College' in statement or 'medical College' in statement:
-            speak('Here are some top website for Medical Colleges in India')
-            webbrowser.open_new_tab("https://collegedunia.com")
+          speak('Here are some top website for Medical Colleges in India')
+          webbrowser.open_new_tab("https://collegedunia.com")
+          speak(" College Dunia website is opened!")
+          time.sleep(2)
+        elif 'Top Science colleges in India' in statement or 'Indian science College' in statement or 'science College' in statement:
+            speak('Here are some top website for Science Colleges in India')
+            webbrowser.open_new_tab("https://collegedunia.com/science-colleges")
             speak(" College Dunia website is opened!")
             time.sleep(2)
 
         elif "weather" in statement:
+
             api_key = "8ef61edcf1c576d65d836254e11ea420"
             base_url = "https://api.openweathermap.org/data/2.5/weather?"
             speak("whats the city name")
