@@ -358,6 +358,11 @@ if __name__ == '__main__':
             webbrowser.open_new_tab("https://collegedunia.com/science-colleges")
             speak(" College Dunia website is opened!")
             time.sleep(2)
+        elif 'Top Law colleges in India' in statement or 'Indian law College' in statement or 'law College' in statement:
+            speak('Here are some top website for law Colleges in India')
+            webbrowser.open_new_tab("https://www.collegedekho.com/law-humanities/law-colleges-in-india/")
+            speak(" College Deko website is opened!")
+            time.sleep(2)
 
         elif "weather" in statement:
 
