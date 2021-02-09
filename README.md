@@ -89,6 +89,9 @@ Thats all about installation and version control with **Git**
 <img src="DWOC.jpeg" width=500>
 <img src="Cwoc.jpg" width=500>
 
+## Slack Channel for CWOC 2021
+[Cwoc 21 | Ashtech personal voice assistant](https://app.slack.com/client/T01MPBVM30U/C01MADL0H62)
+
 ## :clap: And it's done!
 Feel free to mail me for any doubts/query 
 :email: theyoungtech515@gmail.com
