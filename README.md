@@ -87,6 +87,7 @@ Thats all about installation and version control with **Git**
 ## Contribution Programmes
 
 <img src="DWOC.jpeg" width=500>
+<img src="Cwoc.jpg" width=500>
 
 ## :clap: And it's done!
 Feel free to mail me for any doubts/query 
