@@ -1,4 +1,4 @@
-#import libraries
+#TODO: import libraries
 from keras.models import load_model
 from time import sleep
 from keras.preprocessing.image import img_to_array
@@ -13,7 +13,7 @@ class_names = ['Angry','Happy','Sad','Surprise','Neutral']
 capture = cv2.VideoCapture(0)
 
 while True:
-    #capture single frame from video
+    #TODO: capture single frame from video
     ret, frame = capture.read()
     names = []
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -30,7 +30,7 @@ while True:
             roi = img_to_array(roi)
             roi = np.extend_dims(roi,axis=0)
 
-    #make a prediction on the ROI,then lookup the class
+    #TODO: make a prediction on the ROI,then lookup the class
 
             predict = classifier.predict(roi)[0]
             print("\nprediction = ",predict)
@@ -45,7 +45,7 @@ while True:
         print("\n\n")
         
 
-    #to stop the script
+    #TODO: stop the script
     cv2.imshow('Emotion Detector',frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
