@@ -573,6 +573,33 @@ if __name__ == '__main__':
             except Exception as e:
                 print(e)
                 speak("I am not able to send this message")
+                  
+        elif 'travel' in statement or 'cab-booking' in statement or 'trip' in statement or 'ola' in statement or 'uber' in statement or 'Cab' in statement:
+            speak('It seems you are interested in travelling somewhere'
+                 'Want to Use Cab Sevices or Travel long distanced Trip')
+            print("Cab Sevices or Travel long distanced Trip")
+            travelask = takeCommand().lower()
+           
+            if "travel-long" or "distanced-trip" or "trip" in travelask:
+                websites = ['makemytrip', 'booking', 'airbnb', 'Trivago']
+                print('\n'.join(websites))
+                speak("what do you want to open?")
+                user_ip = takeCommand().lower().replace(' ', '')
+                for website in websites:
+                    if website in user_ip:
+                        speak('Opening' + str(website))
+                        webbrowser.open(website + '.com')
+
+            elif "cab-services" or "cab" in travelask:
+                print("Want to use Ola or Uber")
+                speak('Want to use Ola or Uber')
+                travelask2=takeCommand().lower()
+                if "ola" in travelask2:
+                    webbrowser.open_new_tab("https://www.olacabs.com")
+                    speak('Ola website is open now')
+                elif "uber" in travelask2:
+                    webbrowser.open_new_tab("https://www.uber.com/in/en/")
+                    speak('Uber website is open now')
 
         speak("Tell me how can I help you now?")
         statement = takeCommand().lower()
