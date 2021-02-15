@@ -337,7 +337,6 @@ if __name__ == '__main__':
             speak(" Indigo website is open now, have a good journey !")
             time.sleep(2)
 
-
         elif "hotel" in statement or "hotel booking" in statement:
             speak('Opening go ibibo .com')
             webbrowser.open_new_tab('goibibo.com/hotels')
@@ -352,16 +351,22 @@ if __name__ == '__main__':
             webbrowser.open_new_tab("https://medicine.careers360.com/colleges/ranking")
             speak("Colleges as per NIRF rankings are opened!")
             time.sleep(2)
-            
-        elif 'Top Law colleges in India' in statement or 'Indian law College' in statement or 'law College' in statement:
+
+        elif 'top science colleges in india' in statement or 'indian science college' in statement or 'science college' in statement:
+            speak('Here are some top website for Science Colleges in India')
+            webbrowser.open_new_tab("https://collegedunia.com/science-colleges")
+            speak(" College Dunia website is opened!")
+
+        elif 'top law colleges in india' in statement or 'indian law college' in statement or 'law college' in statement:
             speak('Here are some top website for law Colleges in India')
             webbrowser.open_new_tab("https://www.collegedekho.com/law-humanities/law-colleges-in-india/")
             speak(" College Deko website is opened!")
             time.sleep(2)
-        elif 'Top Research colleges in India' in statement or 'Indian research College' in statement or 'research College' in statement:
+
+        elif 'top research colleges in india' in statement or 'indian research college' in statement or 'research college' in statement:
             speak('Here are some top website for Research Colleges in India')
             webbrowser.open_new_tab("https://www.biotecnika.org/2019/09/top-govt-research-institutes-present-in-india-top-10-list/")
-            speak(" Biotechnika website is opened!")
+            speak("Biotechnika website is opened!")
             time.sleep(2)
 
         elif "weather" in statement:
