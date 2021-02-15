@@ -14,6 +14,7 @@ import json
 import requests
 import pyaudio
 import headlines
+import random
 import getpass
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
@@ -167,6 +168,14 @@ def user_mood():
             else:
                 return
 
+def htLine1():                          
+    speak("It's " + coinRes)
+
+def htLine2():                          
+    speak("You got " + coinRes)
+
+def htLine3():                          
+    speak("It landed on " + coinRes)
 
 speak("Loading your AI personal assistant AshTech")
 wishMe()
@@ -414,6 +423,18 @@ if __name__ == '__main__':
         elif "open stackoverflow" in statement:
             webbrowser.open_new_tab("https://stackoverflow.com/login")
             speak("Here is stackoverflow")
+        
+        elif 'flip the coin' in statement or 'toss the coin' in statement or 'toss a coin' in statement:
+            chances = ['Heads', 'Tails']
+            coinRes = random.choice(chances)
+            picLine = random.randint(1 ,3)
+            lines = [htLine1, htLine2, htLine3]
+            lines[picLine - 1]()
+
+        elif 'dice' in statement:
+            num = random.randint(1, 6)
+            speak("Your dice number is " + str(num))
+
 
         elif 'news' in statement:
             news = webbrowser.open_new_tab(
