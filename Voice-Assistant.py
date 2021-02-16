@@ -194,6 +194,25 @@ def defination(searchtext):
 speak("Loading your AI personal assistant AshTech")
 wishMe()
 
+user_dct = dict()
+
+prev_users = open('users.txt', 'r')
+try:
+    for line in prev_users:
+        prev_lst = line.strip().split()
+        user_dct[prev_lst[0]] = int(prev_lst[1])
+except:
+    pass
+prev_users.close()
+
+user_dct[platform.node()] = user_dct.get(platform.node(), 0) + 1
+
+new_users = open('users.txt', 'w')
+for k, v in user_dct.items():
+    print(k, v, file=new_users)
+new_users.close()
+
+
 
 if __name__ == '__main__':
 
@@ -633,11 +652,10 @@ if __name__ == '__main__':
                 finalmeaning=defination(definationask)
                 print(finalmeaning)
                 speak(finalmeaning)
-                  
 
-                    speak('Uber website is open now')
+                speak('Uber website is open now')
 
-        elif 'system' in statement or 'system details' in statement:
+        elif 'system' in statement or 'system details' in statement or 'hardware' in statement:
             plat_det = platform.uname()
             print('User : ', plat_det.node)
             print('System :', plat_det.system, plat_det.release, plat_det.version)
@@ -649,6 +667,14 @@ if __name__ == '__main__':
             speak(plat_det.version)
             speak(plat_det.machine)
             speak(plat_det.processor)
+
+        elif 'current user' in statement:
+            speak('Currently')
+            speak(platform.node())
+            speak('is logged in and has logged in')
+            speak(user_dct[platform.node()])
+            speak('times till now')
+
 
         speak("Tell me how can I help you now?")
         statement = takeCommand().lower()
