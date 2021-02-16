@@ -168,6 +168,28 @@ def user_mood():
             else:
                 return
 
+            
+
+def defination(searchtext):
+    url = 'https://www.dictionary.com/browse/'
+    headers = requests.utils.default_headers() 
+    headers.update({
+    'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    })
+    wikistr=wikipedia.summary(searchtext,sentences=3)
+    index=wikistr.find(searchtext)
+    if(index!=-1):
+        wikidef=wikipedia.summary(searchtext,sentences=3)
+        return(wikidef)
+    else:
+        req = requests.get(url+searchtext, headers)
+        soup = BeautifulSoup(req.content, 'html.parser')
+
+        mydivs = soup.findAll("div", {"value": "1"})[0]
+
+        for tags in mydivs:
+            meaning = tags.text
+        return(meaning)
 
 speak("Loading your AI personal assistant AshTech")
 wishMe()
@@ -600,6 +622,19 @@ if __name__ == '__main__':
                     speak('Ola website is open now')
                 elif "uber" in travelask2:
                     webbrowser.open_new_tab("https://www.uber.com/in/en/")
+
+                    speak('Uber website is open now')                  
+                  
+            elif 'search' in statement or 'defination' in statement:
+                speak('I guess you want to search defination'
+                    'What do you want to search about sir')
+                print("What do you want to search about sir")
+                definationask=takeCommand().lower()
+                finalmeaning=defination(definationask)
+                print(finalmeaning)
+                speak(finalmeaning)
+                  
+
                     speak('Uber website is open now')
 
         elif 'system' in statement or 'system details' in statement:
@@ -614,6 +649,7 @@ if __name__ == '__main__':
             speak(plat_det.version)
             speak(plat_det.machine)
             speak(plat_det.processor)
+
 
 
         speak("Tell me how can I help you now?")
