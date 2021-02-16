@@ -31,6 +31,7 @@ import pickle
 from scipy.io import wavfile
 from bs4 import BeautifulSoup
 import requests
+import platform
 
 
 pyttsx3.speak("Enter your password")
@@ -636,8 +637,18 @@ if __name__ == '__main__':
 
                     speak('Uber website is open now')
 
-
-
+        elif 'system' in statement or 'system details' in statement:
+            plat_det = platform.uname()
+            print('User : ', plat_det.node)
+            print('System :', plat_det.system, plat_det.release, plat_det.version)
+            print('Machine :', plat_det.machine)
+            print('Processor : ', plat_det.processor)
+            speak(plat_det.node)
+            speak(plat_det.system)
+            speak(plat_det.release)
+            speak(plat_det.version)
+            speak(plat_det.machine)
+            speak(plat_det.processor)
 
         speak("Tell me how can I help you now?")
         statement = takeCommand().lower()
