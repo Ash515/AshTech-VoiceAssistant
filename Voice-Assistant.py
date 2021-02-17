@@ -25,13 +25,14 @@ from selenium.webdriver.common.by import By
 import librosa
 import soundfile
 import numpy as np
-import os, pickle,glob
+import pickle,glob
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 import pickle
 from scipy.io import wavfile
 from bs4 import BeautifulSoup
 import requests
+import platform
 
 
 pyttsx3.speak("Enter your password")
@@ -168,6 +169,7 @@ def user_mood():
             else:
                 return
 
+<<<<<<< HEAD
 def htLine1():                          
     speak("It's " + coinRes)
 
@@ -176,9 +178,52 @@ def htLine2():
 
 def htLine3():                          
     speak("It landed on " + coinRes)
+=======
+            
+
+def defination(searchtext):
+    url = 'https://www.dictionary.com/browse/'
+    headers = requests.utils.default_headers() 
+    headers.update({
+    'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    })
+    wikistr=wikipedia.summary(searchtext,sentences=3)
+    index=wikistr.find(searchtext)
+    if(index!=-1):
+        wikidef=wikipedia.summary(searchtext,sentences=3)
+        return(wikidef)
+    else:
+        req = requests.get(url+searchtext, headers)
+        soup = BeautifulSoup(req.content, 'html.parser')
+
+        mydivs = soup.findAll("div", {"value": "1"})[0]
+
+        for tags in mydivs:
+            meaning = tags.text
+        return(meaning)
+>>>>>>> 11aba2243e66ab9a5e9dee78bf521f17fd3caee1
 
 speak("Loading your AI personal assistant AshTech")
 wishMe()
+
+user_dct = dict()
+
+prev_users = open('users.txt', 'r')
+try:
+    for line in prev_users:
+        prev_lst = line.strip().split()
+        user_dct[prev_lst[0]] = int(prev_lst[1])
+except:
+    pass
+prev_users.close()
+
+user_dct[platform.node()] = user_dct.get(platform.node(), 0) + 1
+
+new_users = open('users.txt', 'w')
+for k, v in user_dct.items():
+    print(k, v, file=new_users)
+new_users.close()
+
 
 
 if __name__ == '__main__':
@@ -328,7 +373,7 @@ if __name__ == '__main__':
             speak(" Book my show website is open now")
             time.sleep(2)
 
-        elif 'Train ticket booking' in statement or 'train booking' in statement or 'train ticket' in statement or 'train ticket' in statement:
+        elif 'train ticket booking' in statement or 'train booking' in statement or 'train ticket' in statement or 'train ticket' in statement:
             speak('Here are some top websites for tarin ticket booking')
             webbrowser.open_new_tab("https://www.easemytrip.com/railways/")
             speak(" Ease My trip website is open now, have a good journey !")
@@ -346,36 +391,36 @@ if __name__ == '__main__':
             speak(" Indigo website is open now, have a good journey !")
             time.sleep(2)
 
-
         elif "hotel" in statement or "hotel booking" in statement:
             speak('Opening go ibibo .com')
             webbrowser.open_new_tab('goibibo.com/hotels')
 
-        elif 'Top Engineering colleges in India' in statement or 'Indian Engineering College' in statement or 'Engineering College' in statement:
-
-            speak('Here are some top website for Engineering Colleges in India')
-            webbrowser.open_new_tab("https://www.shiksha.com")
-            speak(" Shiksha website is opened!")
+        elif 'top engineering colleges in india' in statement or 'indian engineering college' in statement or 'engineering college' in statement:
+            webbrowser.open_new_tab("https://www.shiksha.com/b-tech/ranking/top-engineering-colleges-in-india/44-2-0-0-0")
+            speak("Colleges as per NIRF Ranking are open on Shiksha website!")
             time.sleep(2)
-        elif 'Top Medical colleges in India' in statement or 'Indian medical College' in statement or 'medical College' in statement:
-          speak('Here are some top website for Medical Colleges in India')
-          webbrowser.open_new_tab("https://collegedunia.com")
-          speak(" College Dunia website is opened!")
-          time.sleep(2)
-        elif 'Top Science colleges in India' in statement or 'Indian science College' in statement or 'science College' in statement:
+
+        elif 'top medical colleges in india' in statement or 'indian medical college' in statement or 'medical college' in statement:
+            speak('Here are some top Medical Colleges in India')
+            webbrowser.open_new_tab("https://medicine.careers360.com/colleges/ranking")
+            speak("Colleges as per NIRF rankings are opened!")
+            time.sleep(2)
+
+        elif 'top science colleges in india' in statement or 'indian science college' in statement or 'science college' in statement:
             speak('Here are some top website for Science Colleges in India')
             webbrowser.open_new_tab("https://collegedunia.com/science-colleges")
             speak(" College Dunia website is opened!")
-            time.sleep(2)
-        elif 'Top Law colleges in India' in statement or 'Indian law College' in statement or 'law College' in statement:
+
+        elif 'top law colleges in india' in statement or 'indian law college' in statement or 'law college' in statement:
             speak('Here are some top website for law Colleges in India')
             webbrowser.open_new_tab("https://www.collegedekho.com/law-humanities/law-colleges-in-india/")
             speak(" College Deko website is opened!")
             time.sleep(2)
-        elif 'Top Research colleges in India' in statement or 'Indian research College' in statement or 'research College' in statement:
+
+        elif 'top research colleges in india' in statement or 'indian research college' in statement or 'research college' in statement:
             speak('Here are some top website for Research Colleges in India')
             webbrowser.open_new_tab("https://www.biotecnika.org/2019/09/top-govt-research-institutes-present-in-india-top-10-list/")
-            speak(" Biotechnika website is opened!")
+            speak("Biotechnika website is opened!")
             time.sleep(2)
 
         elif "weather" in statement:
@@ -620,7 +665,40 @@ if __name__ == '__main__':
                     speak('Ola website is open now')
                 elif "uber" in travelask2:
                     webbrowser.open_new_tab("https://www.uber.com/in/en/")
-                    speak('Uber website is open now')
+
+                    speak('Uber website is open now')                  
+                  
+            elif 'search' in statement or 'defination' in statement:
+                speak('I guess you want to search defination'
+                    'What do you want to search about sir')
+                print("What do you want to search about sir")
+                definationask=takeCommand().lower()
+                finalmeaning=defination(definationask)
+                print(finalmeaning)
+                speak(finalmeaning)
+
+                speak('Uber website is open now')
+
+        elif 'system' in statement or 'system details' in statement or 'hardware' in statement:
+            plat_det = platform.uname()
+            print('User : ', plat_det.node)
+            print('System :', plat_det.system, plat_det.release, plat_det.version)
+            print('Machine :', plat_det.machine)
+            print('Processor : ', plat_det.processor)
+            speak(plat_det.node)
+            speak(plat_det.system)
+            speak(plat_det.release)
+            speak(plat_det.version)
+            speak(plat_det.machine)
+            speak(plat_det.processor)
+
+        elif 'current user' in statement:
+            speak('Currently')
+            speak(platform.node())
+            speak('is logged in and has logged in')
+            speak(user_dct[platform.node()])
+            speak('times till now')
+
 
         speak("Tell me how can I help you now?")
         statement = takeCommand().lower()
