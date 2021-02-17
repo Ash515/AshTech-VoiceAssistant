@@ -440,7 +440,7 @@ if __name__ == '__main__':
                       str(weather_description))
 
         elif 'time' in statement:
-            strTime = datetime.datetime.now().strftime("%H:%M:%S")
+            strTime = datetime.datetime.now().strftime("%I:%M:%S %p")
             print(f"the time is {strTime}")
             speak(f"the time is {strTime}")
 
