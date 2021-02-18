@@ -13,6 +13,7 @@ import wolframalpha
 import json
 import requests
 import pyaudio
+import random
 import headlines
 import getpass
 from selenium import webdriver
@@ -168,7 +169,15 @@ def user_mood():
             else:
                 return
 
-            
+#function for coin toss task
+def htLine1():                          
+    speak("It's " + coinRes)
+
+def htLine2():                          
+    speak("You got " + coinRes)
+
+def htLine3():                          
+    speak("It landed on " + coinRes)            
 
 def defination(searchtext):
     url = 'https://www.dictionary.com/browse/'
@@ -483,6 +492,17 @@ if __name__ == '__main__':
             statement = statement.replace("search", "")
             webbrowser.open_new_tab(statement)
             time.sleep(5)
+
+        elif 'flip the coin' in statement or 'toss the coin' in statement or 'toss a coin' in statement:
+            chances = ['Heads', 'Tails']    
+            coinRes = random.choice(chances)
+            picLine = random.randint(1 ,3)
+            lines = [htLine1, htLine2, htLine3]
+            lines[picLine - 1]()
+
+        elif 'dice' in statement:
+            num = random.randint(1, 6)
+            speak("Your dice number is " + str(num))
 
         elif 'ask' in statement:
             speak('I can answer to computational and geographical questions and what question do you want to ask now')
