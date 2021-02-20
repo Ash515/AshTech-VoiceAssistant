@@ -11,6 +11,7 @@ import subprocess
 import ecapture as ec
 import wolframalpha
 import json
+import socket
 import requests
 import pyaudio
 import random
@@ -503,6 +504,13 @@ if __name__ == '__main__':
         elif 'dice' in statement:
             num = random.randint(1, 6)
             speak("Your dice number is " + str(num))
+
+        elif 'hostname and ip' in statement or 'host name and ip' in statement:
+            host_name = socket.gethostname()
+            host_ip = socket.gethostbyname(host_name)
+            print("Host-name: " + host_name)
+            print("IP address: " + host_ip)   
+            speak("Your host name is" + host_name + "and ip address is" + host_ip)
 
         elif 'ask' in statement:
             speak('I can answer to computational and geographical questions and what question do you want to ask now')
