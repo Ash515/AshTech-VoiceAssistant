@@ -512,6 +512,9 @@ if __name__ == '__main__':
             print("IP address: " + host_ip)   
             speak("Your host name is" + host_name + "and ip address is" + host_ip)
 
+        elif 'on screen keyboard' in statement or 'onscreen keyboard' in statement:
+            subprocess.run('osk', shell=True)    
+
         elif 'ask' in statement:
             speak('I can answer to computational and geographical questions and what question do you want to ask now')
             question = takeCommand()
