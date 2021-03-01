@@ -10,7 +10,7 @@ def get_headlines(url):
     for line in soup.findAll('span', {'class': 'w_tle'}):
         info['text'].append(line.text)
         link = line.find('a')['href']
-        if link[0]=='/':
+        if link[0] == '/':
             link = 'https://timesofindia.indiatimes.com' + link
         info['link'].append(link)
     return info
