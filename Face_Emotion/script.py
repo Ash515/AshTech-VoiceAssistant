@@ -20,16 +20,16 @@ while True:
     faces = faceclassi.detectMultiScale(gray, 1.3, 5)
 
     for (x, y, w, h) in faces:
-        cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
-        roi_gray = gray[y:y+h, x:x+w]
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
+        roi_gray = gray[y:y + h, x:x + w]
         roi_gray = cv2.resize(roi_gray, (48, 48), interpolation=cv2.INTER_AREA)
 
         if np.sum([roi_gray]) != 0:
-            roi = roi_gray.astype('float')/255.0
+            roi = roi_gray.astype('float') / 255.0
             roi = img_to_array(roi)
             roi = np.extend_dims(roi, axis=0)
 
-    # TODO: make a prediction on the ROI,then lookup the class
+            # TODO: make a prediction on the ROI,then lookup the class
 
             predict = classifier.predict(roi)[0]
             print("\nprediction = ", predict)
@@ -37,8 +37,8 @@ while True:
             print("\nprediction max = ", predict.argmax())
             print("\nlabel = ", label)
             label_pos = (x, y)
-            cv2.putText(frame, label, label_pos,
-                        cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)
+            cv2.putText(frame, label, label_pos, cv2.FONT_HERSHEY_SIMPLEX, 2,
+                        (0, 255, 0), 3)
         else:
             cv2.putText(frame, 'NO Face Found', (20, 60),
                         cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)

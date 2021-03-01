@@ -3,8 +3,7 @@ from bs4 import BeautifulSoup
 
 
 def get_headlines(url):
-    info = {'text': [],
-            'link': []}
+    info = {'text': [], 'link': []}
     resp = requests.get(url)
     soup = BeautifulSoup(resp.text, 'html.parser')
     for line in soup.findAll('span', {'class': 'w_tle'}):

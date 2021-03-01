@@ -34,12 +34,11 @@ class AudioPlayer:
             self.stream.close()
 
         self.wf = wave.open(file, 'rb')
-        self.stream = self.p.open(
-            format=self.p.get_format_from_width(self.wf.getsampwidth()),
-            channels=self.wf.getnchannels(),
-            rate=self.wf.getframerate(),
-            output=True
-        )
+        self.stream = self.p.open(format=self.p.get_format_from_width(
+            self.wf.getsampwidth()),
+                                  channels=self.wf.getnchannels(),
+                                  rate=self.wf.getframerate(),
+                                  output=True)
 
     def play(self):
         """ Play entire file """
@@ -55,11 +54,13 @@ class AudioPlayer:
         self.p.terminate()
 
 
-lg_code_to_phonem = {"fr": FrenchPhonemes,
-                     "en": BritishEnglishPhonemes,
-                     "es": SpanishPhonemes,
-                     "de": GermanPhonemes,
-                     "it": ItalianPhonemes}
+lg_code_to_phonem = {
+    "fr": FrenchPhonemes,
+    "en": BritishEnglishPhonemes,
+    "es": SpanishPhonemes,
+    "de": GermanPhonemes,
+    "it": ItalianPhonemes
+}
 
 
 class Voice:
@@ -83,13 +84,27 @@ class Voice:
     else:
         raise ValueError('Unsupported system.')
 
-    volumes_presets = {'fr1': 1.17138, 'fr2': 1.60851, 'fr3': 1.01283,
-                       'fr4': 1.0964, 'fr5': 2.64384, 'fr6': 1.35412,
-                       'fr7': 1.96092, 'us1': 1.658, 'us2': 1.7486,
-                       'us3': 3.48104, 'es1': 3.26885, 'es2': 1.84053}
+    volumes_presets = {
+        'fr1': 1.17138,
+        'fr2': 1.60851,
+        'fr3': 1.01283,
+        'fr4': 1.0964,
+        'fr5': 2.64384,
+        'fr6': 1.35412,
+        'fr7': 1.96092,
+        'us1': 1.658,
+        'us2': 1.7486,
+        'us3': 3.48104,
+        'es1': 3.26885,
+        'es2': 1.84053
+    }
 
-    def __init__(self, speed: int = 160, pitch: int = 50, lang: str = "fr",
-                 voice_id: int = None, volume: float = None):
+    def __init__(self,
+                 speed: int = 160,
+                 pitch: int = 50,
+                 lang: str = "fr",
+                 voice_id: int = None,
+                 volume: float = None):
         """All parameters are optional, but it's still advised that you pick
         a language, else it **will** default to French, which is a
         default to the most beautiful language on earth.
@@ -104,20 +119,19 @@ class Voice:
                 "Pitch adjustment has to be an integer between 0 and 99")
 
         # if no voice ID is specified, just defaults to one it can find
-        voice_id = (voice_id if voice_id is not None
-                    else self._find_existing_voiceid(lang))
+        voice_id = (voice_id if voice_id is not None else
+                    self._find_existing_voiceid(lang))
         voice_name = lang + str(voice_id)
-        if (Path(self.mbrola_voices_folder)
-            / Path(voice_name)
-                / Path(voice_name)).is_file():
+        if (Path(self.mbrola_voices_folder) / Path(voice_name) /
+                Path(voice_name)).is_file():
             self.lang = lang
             self.voice_id = voice_id
         else:
             raise self.InvalidVoiceParameters(
                 "Voice %s not found. Check language and voice id, or install "
                 "by running 'sudo apt install mbrola-%s'. On Windows download "
-                "voices from https://github.com/numediart/MBROLA-voices"
-                % (voice_name, voice_name))
+                "voices from https://github.com/numediart/MBROLA-voices" %
+                (voice_name, voice_name))
 
         if volume is not None:
             self.volume = volume
@@ -160,25 +174,30 @@ class Voice:
         # the five terms of this bytes concatenation are the following:
         # ["RIFF"] + [CHUNCK_SIZE] + [VARIOUS_HEADERS] + [SUBCHUNK_SIZE] + [ACTUAL_AUDIO_DATA]
         # http://soundfile.sapp.org/doc/WaveFormat/ to get more details
-        return wav[:4] + pack('<I', len(wav) - 8) + wav[8:40] + pack('<I', len(
-            wav) - 44) + wav[44:]
+        return wav[:4] + pack('<I',
+                              len(wav) - 8) + wav[8:40] + pack(
+                                  '<I',
+                                  len(wav) - 44) + wav[44:]
 
     def _str_to_phonemes(self, text: str) -> PhonemeList:
-        espeak_voice_name_template = ('mb/mb-%s%d'
-                                      if platform in ('linux', 'darwin')
-                                      else 'mb-%s%d')
+        espeak_voice_name_template = ('mb/mb-%s%d' if platform
+                                      in ('linux', 'darwin') else 'mb-%s%d')
         voice_filename = espeak_voice_name_template % (self.lang, self.sex)
 
         # Detailed explanation of options:
         # http://espeak.sourceforge.net/commands.html
         phoneme_synth_args = [
             self.espeak_binary,
-            '-s', str(self.speed),
-            '-p', str(self.pitch),
+            '-s',
+            str(self.speed),
+            '-p',
+            str(self.pitch),
             '--pho',  # outputs mbrola phoneme data
             '-q',  # quiet mode
-            '-v', voice_filename,
-            '%s' % text]
+            '-v',
+            voice_filename,
+            '%s' % text
+        ]
 
         # Linux-specific memory management setting
         # Tells Clib to ignore allocations problems (which happen but doesn't
@@ -186,30 +205,29 @@ class Voice:
         if platform in ('linux', 'darwin'):
             phoneme_synth_args.insert(0, 'MALLOC_CHECK_=0')
 
-        logging.debug("Running espeak command %s"
-                      % " ".join(phoneme_synth_args))
+        logging.debug("Running espeak command %s" %
+                      " ".join(phoneme_synth_args))
 
         # Since MALLOC_CHECK_ has to be used before anything else,
         # we need to compile the full command as a single
         # string and we need to use `shell=True`.
         return PhonemeList.from_pho_str(
-            run(' '.join(phoneme_synth_args), shell=True, stdout=PIPE,
-                stderr=PIPE)
-            .stdout
-            .decode("utf-8")
-            .strip())
+            run(' '.join(phoneme_synth_args),
+                shell=True,
+                stdout=PIPE,
+                stderr=PIPE).stdout.decode("utf-8").strip())
 
     def _phonemes_to_audio(self, phonemes: PhonemeList) -> bytes:
-        voice_path_template = ('%s/%s%d/%s%d'
-                               if platform in ("linux", "darwin")
-                               else '%s\\%s%d\\%s%d')
-        voice_phonemic_db = (voice_path_template
-                             % (self.mbrola_voices_folder, self.lang,
-                                self.voice_id, self.lang, self.voice_id))
+        voice_path_template = ('%s/%s%d/%s%d' if platform
+                               in ("linux", "darwin") else '%s\\%s%d\\%s%d')
+        voice_phonemic_db = (voice_path_template %
+                             (self.mbrola_voices_folder, self.lang,
+                              self.voice_id, self.lang, self.voice_id))
 
         audio_synth_string = [
             self.mbrola_binary,
-            '-v', str(self.volume),
+            '-v',
+            str(self.volume),
             '-e',  # ignores fatal errors on unknown diphone
             voice_phonemic_db,
             '-',  # command or .pho file; `-` instead of a file means stdin
@@ -219,11 +237,14 @@ class Voice:
         if platform in ('linux', 'darwin'):
             audio_synth_string.insert(0, 'MALLOC_CHECK_=0')
 
-        logging.debug(
-            "Running mbrola command %s" % " ".join(audio_synth_string))
+        logging.debug("Running mbrola command %s" %
+                      " ".join(audio_synth_string))
         return self._wav_format(
-            run(" ".join(audio_synth_string), shell=True, stdout=PIPE,
-                stderr=PIPE, input=str(phonemes).encode("utf-8")).stdout)
+            run(" ".join(audio_synth_string),
+                shell=True,
+                stdout=PIPE,
+                stderr=PIPE,
+                input=str(phonemes).encode("utf-8")).stdout)
 
     def _str_to_audio(self, text: str) -> bytes:
 
@@ -235,7 +256,9 @@ class Voice:
     def to_phonemes(self, text: str) -> PhonemeList:
         return self._str_to_phonemes(quote(text))
 
-    def to_audio(self, speech: Union[PhonemeList, str], filename=None) -> bytes:
+    def to_audio(self,
+                 speech: Union[PhonemeList, str],
+                 filename=None) -> bytes:
         """Renders a str or a `PhonemeList` to a wave byte object.
         If a filename is specified, it saves the audio file to wave as well
         Throws a `InvalidVoiceParameters` if the voice isn't found"""
