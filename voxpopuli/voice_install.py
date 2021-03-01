@@ -62,7 +62,8 @@ def install_voices(lang="fr"):
     for voice_id in LANG_FILES[lang]:
         voice_name = lang + str(voice_id)
         print("Downloading MBROLA language file for voice %s" % voice_name)
-        voice_data = request.urlopen(BASE_URL % (voice_name, voice_name)).read()
+        voice_data = request.urlopen(
+            BASE_URL % (voice_name, voice_name)).read()
         # creating folder for the language file
         print("Writing data for language %s" % voice_name)
         voice_folder = MBROLA_FOLDER / Path(voice_name)
@@ -73,8 +74,10 @@ def install_voices(lang="fr"):
 
 
 argparser = argparse.ArgumentParser()
-argparser.add_argument("languages", nargs="+", choices=list(LANG_FILES.keys()), type=str, help="Languages to install")
-argparser.add_argument("--all", action="store_true", help="Download all language files")
+argparser.add_argument("languages", nargs="+", choices=list(
+    LANG_FILES.keys()), type=str, help="Languages to install")
+argparser.add_argument("--all", action="store_true",
+                       help="Download all language files")
 
 if __name__ == "__main__":
     args = argparser.parse_args()

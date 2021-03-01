@@ -12,15 +12,16 @@ def pairwise(iterable):
 
 class Phoneme:
 
-    def __init__(self, name : str, duration : int, pitch_mods : List[Tuple[int, int]] = None):
+    def __init__(self, name: str, duration: int, pitch_mods: List[Tuple[int, int]] = None):
         self.name = name
         self.duration = duration
         self.pitch_modifiers = pitch_mods if pitch_mods is not None else []
 
     def __str__(self):
         return self.name + "\t" \
-               + str(self.duration) + "\t" \
-               + " ".join([str(percent) + " " + str(pitch) for percent, pitch in self.pitch_modifiers])
+            + str(self.duration) + "\t" \
+            + " ".join([str(percent) + " " + str(pitch)
+                        for percent, pitch in self.pitch_modifiers])
 
     @classmethod
     def from_str(cls, pho_str):
@@ -34,7 +35,8 @@ class Phoneme:
         """Set pitches variations from a list of frequencies. The pitch variation are set to be
         equidistant from one another."""
         segment_length = 100 / (len(pitch_list) - 1)
-        self.pitch_modifiers = [(i * segment_length, pitch) for i, pitch in enumerate(pitch_list)]
+        self.pitch_modifiers = [(i * segment_length, pitch)
+                                for i, pitch in enumerate(pitch_list)]
 
 
 class PhonemeList(MutableSequence):
@@ -100,8 +102,8 @@ class AbstractPhonemeGroup:
     def __iter__(self):
         return iter(self._all)
 
-## all these sets are made from information taken here: http://www.phon.ucl.ac.uk/home/sampa/
-## It's the SAMPA (based on IPA) standard for writing phonemes in lots of langages
+# all these sets are made from information taken here: http://www.phon.ucl.ac.uk/home/sampa/
+# It's the SAMPA (based on IPA) standard for writing phonemes in lots of langages
 
 
 class FrenchPhonemes:
@@ -139,7 +141,8 @@ class BritishEnglishPhonemes(AbstractPhonemeGroup):
     SONORANTS = LIQUIDS | NASALS | GLIDES
     CONSONANTS = PLOSIVES | FRICATIVES | SONORANTS | AFFRICATES
     CHECKED = {'I', 'Q', 'U', 'V', 'e', '{'}
-    FREE = {'A:', 'I@', '@U', 'OI,', 'eI', 'e@', 'aI', '3:', 'U@', 'aU,', 'O:', 'i:', 'u:'}
+    FREE = {'A:', 'I@', '@U', 'OI,', 'eI', 'e@',
+            'aI', '3:', 'U@', 'aU,', 'O:', 'i:', 'u:'}
     INDETERMINATE = {'i', 'u'}
     CENTRAL = {'@'}
     VOWELS = CHECKED | FREE | INDETERMINATE | CENTRAL
@@ -185,7 +188,3 @@ class ItalianPhonemes:
     VOWELS = {'i', 'e', 'E', 'a', 'O', 'o', 'u'}
     ACCENTS = {''}
     _all = VOWELS | CONSONANTS | ACCENTS
-
-
-
-

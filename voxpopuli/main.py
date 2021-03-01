@@ -109,7 +109,7 @@ class Voice:
         voice_name = lang + str(voice_id)
         if (Path(self.mbrola_voices_folder)
             / Path(voice_name)
-            / Path(voice_name)).is_file():
+                / Path(voice_name)).is_file():
             self.lang = lang
             self.voice_id = voice_id
         else:
@@ -195,9 +195,9 @@ class Voice:
         return PhonemeList.from_pho_str(
             run(' '.join(phoneme_synth_args), shell=True, stdout=PIPE,
                 stderr=PIPE)
-                .stdout
-                .decode("utf-8")
-                .strip())
+            .stdout
+            .decode("utf-8")
+            .strip())
 
     def _phonemes_to_audio(self, phonemes: PhonemeList) -> bytes:
         voice_path_template = ('%s/%s%d/%s%d'
