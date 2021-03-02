@@ -1,4 +1,3 @@
-
 """Objects and functions used for parsing and manipulating mbrola phonemes"""
 from typing import Tuple, List, Union, Iterable
 from collections import MutableSequence
@@ -11,16 +10,19 @@ def pairwise(iterable):
 
 
 class Phoneme:
-
-    def __init__(self, name : str, duration : int, pitch_mods : List[Tuple[int, int]] = None):
+    def __init__(self,
+                 name: str,
+                 duration: int,
+                 pitch_mods: List[Tuple[int, int]] = None):
         self.name = name
         self.duration = duration
         self.pitch_modifiers = pitch_mods if pitch_mods is not None else []
 
     def __str__(self):
         return self.name + "\t" \
-               + str(self.duration) + "\t" \
-               + " ".join([str(percent) + " " + str(pitch) for percent, pitch in self.pitch_modifiers])
+            + str(self.duration) + "\t" \
+            + " ".join([str(percent) + " " + str(pitch)
+                        for percent, pitch in self.pitch_modifiers])
 
     @classmethod
     def from_str(cls, pho_str):
@@ -28,30 +30,35 @@ class Phoneme:
         split_pho = pho_str.split()
         name = split_pho.pop(0)
         duration = int(split_pho.pop(0))
-        return cls(name, duration, [(int(percent), int(pitch)) for percent, pitch in pairwise(split_pho)])
+        return cls(name, duration, [(int(percent), int(pitch))
+                                    for percent, pitch in pairwise(split_pho)])
 
     def set_from_pitches_list(self, pitch_list: List[int]):
         """Set pitches variations from a list of frequencies. The pitch variation are set to be
         equidistant from one another."""
         segment_length = 100 / (len(pitch_list) - 1)
-        self.pitch_modifiers = [(i * segment_length, pitch) for i, pitch in enumerate(pitch_list)]
+        self.pitch_modifiers = [(i * segment_length, pitch)
+                                for i, pitch in enumerate(pitch_list)]
 
 
 class PhonemeList(MutableSequence):
     """A list of phonemes. Can be printed into a .pho string formatted file"""
-
     def __init__(self, blocks: Union[Phoneme, Iterable[Phoneme]]):
         if isinstance(blocks, Phoneme):
             self._pho_list = [blocks]
         elif isinstance(blocks, Iterable):
             self._pho_list = list(blocks)
         else:
-            raise ValueError("Expecting a list of blocks or a phonemes, got %s"
-                             % str(type(blocks)))
+            raise ValueError(
+                "Expecting a list of blocks or a phonemes, got %s" %
+                str(type(blocks)))
 
     @classmethod
     def from_pho_str(cls, pho_str_list: str):
-        return cls([Phoneme.from_str(pho_str) for pho_str in pho_str_list.split("\n") if pho_str.strip()])
+        return cls([
+            Phoneme.from_str(pho_str) for pho_str in pho_str_list.split("\n")
+            if pho_str.strip()
+        ])
 
     def __len__(self) -> int:
         return len(self._pho_list)
@@ -100,8 +107,9 @@ class AbstractPhonemeGroup:
     def __iter__(self):
         return iter(self._all)
 
-## all these sets are made from information taken here: http://www.phon.ucl.ac.uk/home/sampa/
-## It's the SAMPA (based on IPA) standard for writing phonemes in lots of langages
+
+# all these sets are made from information taken here: http://www.phon.ucl.ac.uk/home/sampa/
+# It's the SAMPA (based on IPA) standard for writing phonemes in lots of langages
 
 
 class FrenchPhonemes:
@@ -139,7 +147,10 @@ class BritishEnglishPhonemes(AbstractPhonemeGroup):
     SONORANTS = LIQUIDS | NASALS | GLIDES
     CONSONANTS = PLOSIVES | FRICATIVES | SONORANTS | AFFRICATES
     CHECKED = {'I', 'Q', 'U', 'V', 'e', '{'}
-    FREE = {'A:', 'I@', '@U', 'OI,', 'eI', 'e@', 'aI', '3:', 'U@', 'aU,', 'O:', 'i:', 'u:'}
+    FREE = {
+        'A:', 'I@', '@U', 'OI,', 'eI', 'e@', 'aI', '3:', 'U@', 'aU,', 'O:',
+        'i:', 'u:'
+    }
     INDETERMINATE = {'i', 'u'}
     CENTRAL = {'@'}
     VOWELS = CHECKED | FREE | INDETERMINATE | CENTRAL
@@ -159,8 +170,10 @@ class GermanPhonemes(AbstractPhonemeGroup):
     DIPHTONGS = {'OY', 'aI', 'aU'}
     VOWELS = CHECKED | PURE | DIPHTONGS
     SCHWA = {"@"}
-    CENTRING_DIPHTONGS = {'2:6', '6', '96', 'E6', 'E:6', 'I6', 'O6', 'U6', 'Y6',
-                          'a6', 'a:6', 'e:6', 'i:6', 'o:6', 'u:6', 'y:6'}
+    CENTRING_DIPHTONGS = {
+        '2:6', '6', '96', 'E6', 'E:6', 'I6', 'O6', 'U6', 'Y6', 'a6', 'a:6',
+        'e:6', 'i:6', 'o:6', 'u:6', 'y:6'
+    }
     _all = VOWELS | SCHWA | CENTRING_DIPHTONGS | CONSONANTS
 
 
@@ -185,7 +198,3 @@ class ItalianPhonemes:
     VOWELS = {'i', 'e', 'E', 'a', 'O', 'o', 'u'}
     ACCENTS = {''}
     _all = VOWELS | CONSONANTS | ACCENTS
-
-
-
-

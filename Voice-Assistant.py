@@ -26,7 +26,8 @@ from selenium.webdriver.common.by import By
 import librosa
 import soundfile
 import numpy as np
-import pickle,glob
+import pickle
+import glob
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 import pickle
@@ -34,7 +35,6 @@ from scipy.io import wavfile
 from bs4 import BeautifulSoup
 import requests
 import platform
-
 
 pyttsx3.speak("Enter your password")
 inpass = getpass.getpass("Enter your password :")
@@ -104,7 +104,7 @@ def takeCommand():
             return "None"
         return statement
 
-    
+
 def whatsapp(to, message):
     person = [to]
     string = message
@@ -132,34 +132,40 @@ def user_mood():
     with soundfile.SoundFile('audio_file.wav') as s_file:
         x = s_file.read(dtype="float32")
         sample_rate = s_file.samplerate
-    # x,sample_rate=soundfile.read(s_file)
-        chroma=True
-        mfcc=True
-        mel=True
+        # x,sample_rate=soundfile.read(s_file)
+        chroma = True
+        mfcc = True
+        mel = True
         if chroma:
-            stft=np.abs(librosa.stft(x))
-        result=np.array([])
+            stft = np.abs(librosa.stft(x))
+        result = np.array([])
         if mfcc:
-            mfccs = np.mean(librosa.feature.mfcc(y=x, sr=sample_rate, n_mfcc=40).T, axis=0)
+            mfccs = np.mean(librosa.feature.mfcc(y=x,
+                                                 sr=sample_rate,
+                                                 n_mfcc=40).T,
+                            axis=0)
             result = np.hstack((result, mfccs))
         if chroma:
-            chroma = np.mean(librosa.feature.chroma_stft(S=stft, sr=sample_rate).T, axis=0)
+            chroma = np.mean(librosa.feature.chroma_stft(S=stft,
+                                                         sr=sample_rate).T,
+                             axis=0)
             result = np.hstack((result, chroma))
         if mel:
-            mel = np.mean(librosa.feature.melspectrogram(x, sr=sample_rate).T, axis=0)
+            mel = np.mean(librosa.feature.melspectrogram(x, sr=sample_rate).T,
+                          axis=0)
             result = np.hstack((result, mel))
 
     with open('model.pkl', 'rb') as file:
         model = pickle.load(file)
-        result=np.array(result)
-        result=result.reshape(180,1)
-        result=result.transpose()
-        pred=model.predict(result)
-        if(pred==1):
+        result = np.array(result)
+        result = result.reshape(180, 1)
+        result = result.transpose()
+        pred = model.predict(result)
+        if (pred == 1):
             speak('You seem happy today')
             print('You seem happy today :)')
 
-        elif(pred==0):
+        elif (pred == 0):
             speak(' Should I tell you some jokes to make your mood before')
             print('Should I tell you some jokes to make your mood before')
             statement1 = takeCommand().lower()
@@ -170,36 +176,44 @@ def user_mood():
             else:
                 return
 
-#function for coin toss task
-def htLine1():                          
+
+# function for coin toss task
+
+
+def htLine1():
     speak("It's " + coinRes)
 
-def htLine2():                          
+
+def htLine2():
     speak("You got " + coinRes)
 
-def htLine3():                          
-    speak("It landed on " + coinRes)            
+
+def htLine3():
+    speak("It landed on " + coinRes)
+
 
 def defination(searchtext):
     url = 'https://www.dictionary.com/browse/'
-    headers = requests.utils.default_headers() 
+    headers = requests.utils.default_headers()
     headers.update({
-    'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+        'User-Agent':
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
     })
-    wikistr=wikipedia.summary(searchtext,sentences=3)
-    index=wikistr.find(searchtext)
-    if(index!=-1):
-        wikidef=wikipedia.summary(searchtext,sentences=3)
-        return(wikidef)
+    wikistr = wikipedia.summary(searchtext, sentences=3)
+    index = wikistr.find(searchtext)
+    if (index != -1):
+        wikidef = wikipedia.summary(searchtext, sentences=3)
+        return (wikidef)
     else:
-        req = requests.get(url+searchtext, headers)
+        req = requests.get(url + searchtext, headers)
         soup = BeautifulSoup(req.content, 'html.parser')
 
         mydivs = soup.findAll("div", {"value": "1"})[0]
 
         for tags in mydivs:
             meaning = tags.text
-        return(meaning)
+        return (meaning)
+
 
 speak("Loading your AI personal assistant AshTech")
 wishMe()
@@ -222,8 +236,6 @@ for k, v in user_dct.items():
     print(k, v, file=new_users)
 new_users.close()
 
-
-
 if __name__ == '__main__':
 
     statement = take_First_Command().lower()
@@ -234,7 +246,8 @@ if __name__ == '__main__':
 
         if "good bye" in statement or "ok bye" in statement or "stop" in statement or "quit" in statement or "close" in statement:
             print('your personal assistant Ashtech is shutting down, Good bye')
-            speak('your personal assistant Ashtech  is shutting down, Good bye')
+            speak(
+                'your personal assistant Ashtech  is shutting down, Good bye')
             break
 
         if 'wikipedia' in statement:
@@ -262,7 +275,8 @@ if __name__ == '__main__':
 
         elif 'covid-19 tracker' in statement:
             webbrowser.open_new_tab(
-                "https://news.google.com/covid19/map?hl=en-IN&gl=IN&ceid=IN%3Aen")
+                "https://news.google.com/covid19/map?hl=en-IN&gl=IN&ceid=IN%3Aen"
+            )
             speak("covid-19 tracker is open now")
             time.sleep(5)
 
@@ -279,8 +293,9 @@ if __name__ == '__main__':
             speak("here you are sir")
 
         elif 'online courses' in statement or 'course' in statement:
-            platforms = ['coursera', 'udemy', 'edx',
-                         'skillshare', 'datacamp', 'udacity']
+            platforms = [
+                'coursera', 'udemy', 'edx', 'skillshare', 'datacamp', 'udacity'
+            ]
             speak("Select a platform that you prefer : ")
             print("\n".join(platforms))
             statement1 = takeCommand().lower()
@@ -313,13 +328,16 @@ if __name__ == '__main__':
             else:
                 speak("Sorry we couldn't find your search!!!")
             time.sleep(3)
-        
+
         elif 'jobs' in statement or 'job' in statement or 'job recommandation' in statement or 'work' in statement:
-            platforms = ['linkedin', 'indeed', 'glassdoor', 'hackerrank', 'naukri', 'intern shala']
+            platforms = [
+                'linkedin', 'indeed', 'glassdoor', 'hackerrank', 'naukri',
+                'intern shala'
+            ]
             speak("Select a platform that you prefer:")
             print('\n'.join(platforms))
             statement1 = takeCommand().lower()
-            if(statement1 == 0):
+            if (statement1 == 0):
                 continue
             if 'linkedIn' in statement1:
                 webbrowser.open_new_tab("https://www.linkedin.com/jobs")
@@ -334,7 +352,8 @@ if __name__ == '__main__':
                 speak("Glassdoor is open now")
                 time.sleep(2)
             elif 'hackerrank' in statement1:
-                webbrowser.open_new_tab("https://www.hackerrank.com/jobs/search")
+                webbrowser.open_new_tab(
+                    "https://www.hackerrank.com/jobs/search")
                 speak("HackerRank is open now")
                 time.sleep(2)
             elif 'naukri' in statement1:
@@ -359,7 +378,7 @@ if __name__ == '__main__':
             all_news = news_box.find_all('p')
 
             for news in all_news:
-                print('\n'+news.text)
+                print('\n' + news.text)
                 speak(news.text)
                 print()
                 time.sleep(6)
@@ -394,30 +413,38 @@ if __name__ == '__main__':
             webbrowser.open_new_tab('goibibo.com/hotels')
 
         elif 'top engineering colleges in india' in statement or 'indian engineering college' in statement or 'engineering college' in statement:
-            webbrowser.open_new_tab("https://www.shiksha.com/b-tech/ranking/top-engineering-colleges-in-india/44-2-0-0-0")
+            webbrowser.open_new_tab(
+                "https://www.shiksha.com/b-tech/ranking/top-engineering-colleges-in-india/44-2-0-0-0"
+            )
             speak("Colleges as per NIRF Ranking are open on Shiksha website!")
             time.sleep(2)
 
         elif 'top medical colleges in india' in statement or 'indian medical college' in statement or 'medical college' in statement:
             speak('Here are some top Medical Colleges in India')
-            webbrowser.open_new_tab("https://medicine.careers360.com/colleges/ranking")
+            webbrowser.open_new_tab(
+                "https://medicine.careers360.com/colleges/ranking")
             speak("Colleges as per NIRF rankings are opened!")
             time.sleep(2)
 
         elif 'top science colleges in india' in statement or 'indian science college' in statement or 'science college' in statement:
             speak('Here are some top website for Science Colleges in India')
-            webbrowser.open_new_tab("https://collegedunia.com/science-colleges")
+            webbrowser.open_new_tab(
+                "https://collegedunia.com/science-colleges")
             speak(" College Dunia website is opened!")
 
         elif 'top law colleges in india' in statement or 'indian law college' in statement or 'law college' in statement:
             speak('Here are some top website for law Colleges in India')
-            webbrowser.open_new_tab("https://www.collegedekho.com/law-humanities/law-colleges-in-india/")
+            webbrowser.open_new_tab(
+                "https://www.collegedekho.com/law-humanities/law-colleges-in-india/"
+            )
             speak(" College Deko website is opened!")
             time.sleep(2)
 
         elif 'top research colleges in india' in statement or 'indian research college' in statement or 'research college' in statement:
             speak('Here are some top website for Research Colleges in India')
-            webbrowser.open_new_tab("https://www.biotecnika.org/2019/09/top-govt-research-institutes-present-in-india-top-10-list/")
+            webbrowser.open_new_tab(
+                "https://www.biotecnika.org/2019/09/top-govt-research-institutes-present-in-india-top-10-list/"
+            )
             speak("Biotechnika website is opened!")
             time.sleep(2)
 
@@ -438,16 +465,12 @@ if __name__ == '__main__':
                 weather_description = z[0]["description"]
                 print(" Temperature in kelvin unit is " +
                       str(current_temperature) +
-                      "\n humidity in percentage is " +
-                      str(current_humidiy) +
-                      "\n description  " +
-                      str(weather_description))
+                      "\n humidity in percentage is " + str(current_humidiy) +
+                      "\n description  " + str(weather_description))
                 speak(" Temperature in kelvin unit = " +
                       str(current_temperature) +
-                      "\n humidity (in percentage) = " +
-                      str(current_humidiy) +
-                      "\n description = " +
-                      str(weather_description))
+                      "\n humidity (in percentage) = " + str(current_humidiy) +
+                      "\n description = " + str(weather_description))
 
         elif 'time' in statement:
             strTime = datetime.datetime.now().strftime("%I:%M:%S %p")
@@ -455,9 +478,11 @@ if __name__ == '__main__':
             speak(f"the time is {strTime}")
 
         elif 'who are you' in statement or 'what can you do' in statement:
-            speak('I am Ashwin friend Ashtech version 1 point O your persoanl assistant. I am programmed to minor tasks like'
-                  'opening youtube,google chrome,gmail and stackoverflow ,predict time,take a photo,search wikipedia,predict weather'
-                  'in different cities , get top headline news from times of india and you can ask me computational or geographical questions too!')
+            speak(
+                'I am Ashwin friend Ashtech version 1 point O your persoanl assistant. I am programmed to minor tasks like'
+                'opening youtube,google chrome,gmail and stackoverflow ,predict time,take a photo,search wikipedia,predict weather'
+                'in different cities , get top headline news from times of india and you can ask me computational or geographical questions too!'
+            )
 
         elif "who made you" in statement or "who created you" in statement or "who discovered you" in statement:
             speak("I was built by Ashwin Kumar Ramaswamy")
@@ -470,9 +495,12 @@ if __name__ == '__main__':
         elif 'news' in statement:
             news = webbrowser.open_new_tab(
                 "https://timesofindia.indiatimes.com/home/headlines")
-            speak('Here are some headlines from the Times of India,Happy reading')
             speak(
-                'If you like the headline, say "visit" to open the page and read details')
+                'Here are some headlines from the Times of India,Happy reading'
+            )
+            speak(
+                'If you like the headline, say "visit" to open the page and read details'
+            )
             headlines = headlines.get_headlines(
                 "https://timesofindia.indiatimes.com/home/headlines")
             for i in range(15):
@@ -495,9 +523,9 @@ if __name__ == '__main__':
             time.sleep(5)
 
         elif 'flip the coin' in statement or 'toss the coin' in statement or 'toss a coin' in statement:
-            chances = ['Heads', 'Tails']    
+            chances = ['Heads', 'Tails']
             coinRes = random.choice(chances)
-            picLine = random.randint(1 ,3)
+            picLine = random.randint(1, 3)
             lines = [htLine1, htLine2, htLine3]
             lines[picLine - 1]()
 
@@ -509,14 +537,17 @@ if __name__ == '__main__':
             host_name = socket.gethostname()
             host_ip = socket.gethostbyname(host_name)
             print("Host-name: " + host_name)
-            print("IP address: " + host_ip)   
-            speak("Your host name is" + host_name + "and ip address is" + host_ip)
+            print("IP address: " + host_ip)
+            speak("Your host name is" + host_name + "and ip address is" +
+                  host_ip)
 
         elif 'on screen keyboard' in statement or 'onscreen keyboard' in statement:
-            subprocess.run('osk', shell=True)    
+            subprocess.run('osk', shell=True)
 
         elif 'ask' in statement:
-            speak('I can answer to computational and geographical questions and what question do you want to ask now')
+            speak(
+                'I can answer to computational and geographical questions and what question do you want to ask now'
+            )
             question = takeCommand()
             app_id = "R2K75H-7ELALHR35X"
             client = wolframalpha.Client('R2K75H-7ELALHR35X')
@@ -524,7 +555,7 @@ if __name__ == '__main__':
             answer = next(res.results).text
             speak(answer)
             print(answer)
-            
+
         elif 'jokes' in statement or 'joke' in statement:
             joke = pyjokes.get_joke('en', 'all')
             print(joke)
@@ -547,13 +578,17 @@ if __name__ == '__main__':
         elif 'what is my current location' in statement or 'what is my location' in statement or 'where am I' in statement:
             ip = "https://api.ipify.org/"
             ip_r = requests.get(ip).text
-            
-            geoip = "http://ip-api.com/json/"+ip_r
+
+            geoip = "http://ip-api.com/json/" + ip_r
             geo_r = requests.get(geoip)
             geo_json = geo_r.json()
 
-            print(f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}")
-            speak(f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}")
+            print(
+                f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}"
+            )
+            speak(
+                f"Your current location is {geo_json['city']}, {geo_json['regionName']}, {geo_json['country']} {geo_json['zip']}"
+            )
 
         elif "notepad" in statement:
             speak("Opening Notepad")
@@ -590,21 +625,22 @@ if __name__ == '__main__':
         elif "snipping tool" in statement:
             speak("Opening Snipping Tool")
             os.system("start snippingtool")
-                  
+
         elif "show deleted files" in statement or "Recycle Bin" in statement or "Delete files" in statement or "search deleted files" in statement:
             speak("Opening Recycle Bin")
             os.system("start shell:RecycleBinFolder")
-                  
+
         elif "calculator" in statement:
             speak("Opening Calculator")
             os.system("start calc")
-                  
+
         elif "log off" in statement or "sign out" in statement:
             speak(
-                "Ok , your pc will log off in 10 sec make sure you exit from all applications")
+                "Ok , your pc will log off in 10 sec make sure you exit from all applications"
+            )
             subprocess.call(["shutdown", "/l"])
 
-        #Writing notes
+        # Writing notes
         elif "write a note" in statement:
             speak("What should i write, sir")
             print("J: What should i write, sir")
@@ -621,22 +657,28 @@ if __name__ == '__main__':
             else:
                 file.write(note)
 
-        #Showing note
+        # Showing note
         elif "show the note" in statement:
             speak("Showing Notes")
             print("J: Showing Notes")
             file = open("jarvis.txt", "r")
             print(file.read())
             speak(file.read(6))
-            
-        #whatsapp messaging
+
+        # whatsapp messaging
         elif 'whatsapp' in statement:
             try:
-                print("J: To whom should i send? Can you please type in the name.")
-                speak("To whom should i send? Can you please type in the name.")
+                print(
+                    "J: To whom should i send? Can you please type in the name."
+                )
+                speak(
+                    "To whom should i send? Can you please type in the name.")
                 to = input('Name: ')
-                print("J: What should i send? Can you please type in the message.")
-                speak("What should i send? Can you please type in the message.")
+                print(
+                    "J: What should i send? Can you please type in the message."
+                )
+                speak(
+                    "What should i send? Can you please type in the message.")
                 content = input("Enter the message: ")
                 speak('You will have to scan for whatsapp web. ')
                 print('J: You will have to scan for whatsapp web. ')
@@ -646,13 +688,13 @@ if __name__ == '__main__':
             except Exception as e:
                 print(e)
                 speak("I am not able to send this message")
-                  
+
         elif 'travel' in statement or 'cab-booking' in statement or 'trip' in statement or 'ola' in statement or 'uber' in statement or 'Cab' in statement:
             speak('It seems you are interested in travelling somewhere'
-                 'Want to Use Cab Sevices or Travel long distanced Trip')
+                  'Want to Use Cab Sevices or Travel long distanced Trip')
             print("Cab Sevices or Travel long distanced Trip")
             travelask = takeCommand().lower()
-           
+
             if "travel-long" or "distanced-trip" or "trip" in travelask:
                 websites = ['makemytrip', 'booking', 'airbnb', 'Trivago']
                 print('\n'.join(websites))
@@ -666,21 +708,21 @@ if __name__ == '__main__':
             elif "cab-services" or "cab" in travelask:
                 print("Want to use Ola or Uber")
                 speak('Want to use Ola or Uber')
-                travelask2=takeCommand().lower()
+                travelask2 = takeCommand().lower()
                 if "ola" in travelask2:
                     webbrowser.open_new_tab("https://www.olacabs.com")
                     speak('Ola website is open now')
                 elif "uber" in travelask2:
                     webbrowser.open_new_tab("https://www.uber.com/in/en/")
 
-                    speak('Uber website is open now')                  
-                  
+                    speak('Uber website is open now')
+
             elif 'search' in statement or 'defination' in statement:
                 speak('I guess you want to search defination'
-                    'What do you want to search about sir')
+                      'What do you want to search about sir')
                 print("What do you want to search about sir")
-                definationask=takeCommand().lower()
-                finalmeaning=defination(definationask)
+                definationask = takeCommand().lower()
+                finalmeaning = defination(definationask)
                 print(finalmeaning)
                 speak(finalmeaning)
 
@@ -689,7 +731,8 @@ if __name__ == '__main__':
         elif 'system' in statement or 'system details' in statement or 'hardware' in statement:
             plat_det = platform.uname()
             print('User : ', plat_det.node)
-            print('System :', plat_det.system, plat_det.release, plat_det.version)
+            print('System :', plat_det.system, plat_det.release,
+                  plat_det.version)
             print('Machine :', plat_det.machine)
             print('Processor : ', plat_det.processor)
             speak(plat_det.node)
@@ -705,7 +748,6 @@ if __name__ == '__main__':
             speak('is logged in and has logged in')
             speak(user_dct[platform.node()])
             speak('times till now')
-
 
         speak("Tell me how can I help you now?")
         statement = takeCommand().lower()
