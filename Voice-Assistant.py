@@ -544,6 +544,9 @@ if __name__ == '__main__':
         elif 'on screen keyboard' in statement or 'onscreen keyboard' in statement:
             subprocess.run('osk', shell=True)
 
+        elif 'cmd' in statement or 'command prompt' in statement or 'terminal' in statement:
+            os.system("start cmd")
+
         elif 'ask' in statement:
             speak(
                 'I can answer to computational and geographical questions and what question do you want to ask now'
