@@ -613,9 +613,13 @@ if __name__ == '__main__':
             speak("Opening Excel")
             os.system("start excel")
 
-        elif "chrome" in statement:
+        elif "start chrome" in statement:
             speak("Opening Google Chrome")
             os.system("start chrome")
+
+        elif 'chrome in incognito mode' in statement or 'chrome in incognito' in statement:
+            speak("Opening Google Chrome in Incognito mode")
+            os.system('start chrome -incognito')
 
         elif "power point" in statement or "powerpoint" in statement or "ppt" in statement:
             speak("Opening Notepad")
