@@ -86,8 +86,8 @@ Thats all about installation and version control with **Git**
 
 ## Contribution Programmes
 
-<img src="DWOC.jpeg" width=500>
-<img src="Cwoc.jpg" width=500>
+[<img src="DWOC.jpeg" width=500>](https://devscript.tech/woc/)
+[<img src="Cwoc.jpg" width=500>](https://crosswoc.ieeedtu.in/)
 
 ## Slack Channel for CWOC 2021
 [Cwoc 21 | Ashtech personal voice assistant]( https://join.slack.com/t/cwoc21ashtech-6kh1974/shared_invite/zt-m07g8uuu-bRwsytfw0Hfqtq9BHC75qQ)
