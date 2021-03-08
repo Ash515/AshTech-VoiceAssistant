@@ -547,6 +547,10 @@ if __name__ == '__main__':
         elif 'cmd' in statement or 'command prompt' in statement or 'terminal' in statement:
             os.system("start cmd")
 
+        elif 'module in python' in statement or 'pip list' in statement or 'libraries in python' in statement or 'module installed in python' in statement:
+            subprocess.run('pip list', shell=True)
+            speak("Printing all the modules installed in Python")
+
         elif 'ask' in statement:
             speak(
                 'I can answer to computational and geographical questions and what question do you want to ask now'
