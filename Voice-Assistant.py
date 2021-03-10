@@ -12,6 +12,7 @@ import ecapture as ec
 import wolframalpha
 import json
 import socket
+import re
 import requests
 import pyaudio
 import random
@@ -550,6 +551,41 @@ if __name__ == '__main__':
         elif 'module in python' in statement or 'pip list' in statement or 'libraries in python' in statement or 'module installed in python' in statement:
             subprocess.run('pip list', shell=True)
             speak("Printing all the modules installed in Python")
+
+        elif 'wi-fi and their password' in statement or 'wi-fi password' in statement:
+            command_output = subprocess.run(["netsh", "wlan", "show", "profiles"], capture_output = True).stdout.decode()
+            profile_names = (re.findall("All User Profile     : (.*)\r", command_output))
+
+            wifi_list = list()
+
+            if len(profile_names) != 0:
+                for name in profile_names:
+                    wifi_profile = dict()
+                    profile_info = subprocess.run(["netsh", "wlan", "show", "profile", name], capture_output = True).stdout.decode()
+        
+                    if re.search("Security key           : Absent", profile_info):
+                        continue
+
+                    else:
+                        wifi_profile["ssid"] = name
+                        profile_info_pass = subprocess.run(["netsh", "wlan", "show", "profile", name, "key=clear"], capture_output = True).stdout.decode()
+                        password = re.search("Key Content            : (.*)\r", profile_info_pass)
+            
+                        if password == None:
+                            wifi_profile["password"] = None
+                        else:
+                            wifi_profile["password"] = password[1]
+        
+                        wifi_list.append(wifi_profile)
+
+
+            with open('wifi_passwords.txt', 'w+') as fh:
+                for x in wifi_list:
+                    fh.write(f"Wifi_Name: {x['ssid']}\nPassword: {x['password']}\n")
+
+            with open('wifi_passwords.txt', 'rb') as fh:
+                    speak('Successfully stored all the wifi passwords in txt file')
+                    subprocess.run('wifi_passwords.txt', shell=True)
 
         elif 'ask' in statement:
             speak(
