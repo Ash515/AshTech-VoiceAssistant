@@ -37,6 +37,9 @@ from bs4 import BeautifulSoup
 import requests
 import platform
 import Bday
+import pyshorteners
+import pyperclip
+from tkinter import *
 
 pyttsx3.speak("Enter your password")
 inpass = getpass.getpass("Enter your password :")
@@ -52,6 +55,12 @@ engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voice', 'voices[0].id')
 
+root = Tk()
+root.geometry("400x200")
+root.title("URL Shortener")
+root.configure(bg='#49A')
+url = StringVar()
+url_address = StringVar()
 
 def speak(text):
     engine.say(text)
@@ -216,6 +225,16 @@ def defination(searchtext):
             meaning = tags.text
         return (meaning)
 
+# Url Shortener
+
+def urlshortener():
+    urladdress = url.get()
+    url_short = pyshorteners.Shortener().tinyurl.short(urladdress)
+    url_address.set(url_short)
+
+def copyurl():
+    url_short = url_address.get()
+    pyperclip.copy(url_short)  
 
 speak("Loading your AI personal assistant AshTech")
 wishMe()
@@ -534,6 +553,16 @@ if __name__ == '__main__':
         elif 'dice' in statement:
             num = random.randint(1, 6)
             speak("Your dice number is " + str(num))
+
+        elif 'url shortener' in statement:
+            Label(root, text=" URL Shortener ", font = ("Arial bold", 13)).place(x=140,y=15)
+            Label(root,text = 'Enter URL :', font = ("poppins",11)).place(x=45,y=65)
+            Entry(root, textvariable=url, width = 35).place(x=145,y=67)
+            Label(root,text = 'Short URL :', font = ("poppins", 11)).place(x=45,y=100)
+            Entry(root, textvariable=url_address, width = 35).place(x=145,y=102)
+            Button(root, text=" Shorten URL ", command=urlshortener).place(x=105,y=140)  
+            Button(root, text=" Copy URL ", command=copyurl).place(x=205,y=140)      
+            root.mainloop()
 
         elif 'hostname and ip' in statement or 'host name and ip' in statement:
             host_name = socket.gethostname()
