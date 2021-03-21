@@ -40,6 +40,7 @@ import Bday
 import pyshorteners
 import pyperclip
 from tkinter import *
+import pyautogui
 
 pyttsx3.speak("Enter your password")
 inpass = getpass.getpass("Enter your password :")
@@ -581,6 +582,15 @@ if __name__ == '__main__':
         elif 'module in python' in statement or 'pip list' in statement or 'libraries in python' in statement or 'module installed in python' in statement:
             subprocess.run('pip list', shell=True)
             speak("Printing all the modules installed in Python")
+
+        elif 'volume up' in statement or 'increase volume' in statement:
+            pyautogui.press('volumeup')
+
+        elif 'volume down' in statement or 'decrease volume' in statement or 'lower the volume' in statement:
+            pyautogui.press('volumedown') 
+
+        elif 'volume mute' in statement or 'turn off the volume' in statement or 'mute' in statement:
+            pyautogui.press('volumemute')
 
         elif 'wi-fi and their password' in statement or 'wi-fi password' in statement:
             command_output = subprocess.run(["netsh", "wlan", "show", "profiles"], capture_output = True).stdout.decode()

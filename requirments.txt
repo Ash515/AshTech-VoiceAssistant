@@ -7,3 +7,4 @@ PyAudio==0.2.11
 beautifulsoup4
 pyperclip==1.8.2
 pyshorteners==1.0.1
+PyAutoGUI==0.9.52
