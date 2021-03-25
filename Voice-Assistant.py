@@ -41,6 +41,7 @@ import pyshorteners
 import pyperclip
 from tkinter import *
 import pyautogui
+from PIL import Image, ImageGrab 
 
 pyttsx3.speak("Enter your password")
 inpass = getpass.getpass("Enter your password :")
@@ -236,6 +237,28 @@ def urlshortener():
 def copyurl():
     url_short = url_address.get()
     pyperclip.copy(url_short)  
+
+
+# function for dino game
+def click(key):
+    pyautogui.keyDown(key)
+    return
+
+def isCollision(data):
+# Check colison for birds
+    for i in range(530,560):
+        for j in range(160, 195):
+            if data[i, j] < 100:
+                click("down")
+                return
+
+# Check colison for cactus
+    for i in range(530, 620):
+        for j in range(200, 230):
+            if data[i, j] < 100:
+                click("up")
+                return
+    return
 
 speak("Loading your AI personal assistant AshTech")
 wishMe()
@@ -582,6 +605,16 @@ if __name__ == '__main__':
         elif 'module in python' in statement or 'pip list' in statement or 'libraries in python' in statement or 'module installed in python' in statement:
             subprocess.run('pip list', shell=True)
             speak("Printing all the modules installed in Python")
+
+        elif 'dinosaur game' in statement or 'chrome dino' in statement:
+            print("Hey, Chrome dino game will start in 8 sec make sure your internet is off")
+            time.sleep(9)
+            click('up') 
+            
+            while True:
+                image = ImageGrab.grab().convert('L')  
+                data = image.load()
+                isCollision(data)
 
         elif 'volume up' in statement or 'increase volume' in statement:
             pyautogui.press('volumeup')
