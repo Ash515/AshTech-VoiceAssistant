@@ -606,6 +606,14 @@ if __name__ == '__main__':
             subprocess.run('pip list', shell=True)
             speak("Printing all the modules installed in Python")
 
+        elif 'take screenshot' in statement or 'capture screen' in statement:
+            print('Taking screenshot in 3 second')
+            speak('Taking screenshot in 3 second')
+            time.sleep(3)
+            img = pyautogui.screenshot()
+            img.save('screenshot.png')
+            subprocess.run('screenshot.png', shell='True')
+
         elif 'dinosaur game' in statement or 'chrome dino' in statement:
             print("Hey, Chrome dino game will start in 8 sec make sure your internet is off")
             time.sleep(9)
