@@ -319,6 +319,12 @@ if __name__ == '__main__':
             speak("Google Mail open now")
             time.sleep(5)
 
+        elif 'open github' in statement:
+            os.system("start chrome www.github.com")
+
+        elif 'open geeks for geeks' in statement:
+            os.system("start chrome www.geeksforgeeks.org") 
+
         elif 'covid-19 tracker' in statement:
             webbrowser.open_new_tab(
                 "https://news.google.com/covid19/map?hl=en-IN&gl=IN&ceid=IN%3Aen"
