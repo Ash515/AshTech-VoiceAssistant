@@ -606,6 +606,15 @@ if __name__ == '__main__':
             subprocess.run('pip list', shell=True)
             speak("Printing all the modules installed in Python")
 
+        # Hide and unhide files and folder
+        elif 'hide folder' in statement or 'hide all files' in statement:
+            os.system('attrib +h /s /d')
+            speak("sir, all the files in this folder are now hidden.")
+
+        elif 'unhide files' in statement or 'visible to everyone' in statement:
+            os.system('attrib -h /s /d')
+            speak("sir, all the files in this folder are now visible to everyone.")
+
         elif 'take screenshot' in statement or 'capture screen' in statement:
             print('Taking screenshot in 3 second')
             speak('Taking screenshot in 3 second')
