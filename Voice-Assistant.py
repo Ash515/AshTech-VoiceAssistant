@@ -42,6 +42,7 @@ import pyperclip
 from tkinter import *
 import pyautogui
 from PIL import Image, ImageGrab 
+import qrcode
 
 pyttsx3.speak("Enter your password")
 inpass = getpass.getpass("Enter your password :")
@@ -614,6 +615,11 @@ if __name__ == '__main__':
         elif 'unhide files' in statement or 'visible to everyone' in statement:
             os.system('attrib -h /s /d')
             speak("sir, all the files in this folder are now visible to everyone.")
+
+        elif 'generate qr code' in statement:
+            img = qrcode.make("https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant/")
+            img.save("repo_qr_code.png")
+            subprocess.run('repo_qr_code.png', shell='True')
 
         elif 'take screenshot' in statement or 'capture screen' in statement:
             print('Taking screenshot in 3 second')
