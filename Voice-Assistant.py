@@ -43,6 +43,7 @@ from tkinter import *
 import pyautogui
 from PIL import Image, ImageGrab 
 import qrcode
+import speedtest
 
 pyttsx3.speak("Enter your password")
 inpass = getpass.getpass("Enter your password :")
@@ -612,6 +613,14 @@ if __name__ == '__main__':
         elif 'module in python' in statement or 'pip list' in statement or 'libraries in python' in statement or 'module installed in python' in statement:
             subprocess.run('pip list', shell=True)
             speak("Printing all the modules installed in Python")
+
+        # checks internet speed
+        elif 'internet speed' in statement:
+            st = speedtest.Speedtest()
+            dl = st.download()
+            up = st.upload()
+            print('download speed : ' + str(dl) + ' bits/sec')
+            print('upload speed : ' + str(up) + ' bits/sec')
 
         # Hide and unhide files and folder
         elif 'hide folder' in statement or 'hide all files' in statement:
