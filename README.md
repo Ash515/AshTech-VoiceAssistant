@@ -10,7 +10,7 @@
 ## Introduction
 A voice assistant is a digital assistant that uses voice recognition, speech synthesis, and natural language processing (NLP) to provide a service through a particular application.
 
-## :heart: Features in AshTech
+##  Features in AshTech
  AshTech is a Personal Artificial Intelligence voice assistant used to predict the basic functions like, 
 - Searching
 - Opening websites like Wikipedia, Stack Overflow, Github etc.
@@ -33,7 +33,7 @@ A voice assistant is a digital assistant that uses voice recognition, speech syn
 ## :hourglass: Project Demo
 - [AshTech 2.0 - AI Personal Voice Assistant](https://www.youtube.com/watch?v=BArmz8vtHB8)
 
-## :handshake: Contribution guidelines 
+## Contribution guidelines 
 Follow these algorithms to contribute to the AshTech repository 
 - Fork this repository 
 - Select your comfortable issues given in issues feature [click here to see the issues](https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant/issues).
@@ -45,14 +45,14 @@ Follow these algorithms to contribute to the AshTech repository
 ## Note  
 Feel free to file a new issue with a respective title and description on the **AshTech- AI Personal Voice Assistant**.  If you already found a solution to your problem, I would love to review your pull request! 
 
-## :key: Prerequisites
+##  Prerequisites
 - You should install python version 3.7
 - import all modules required for the project using this command
 ```
 pip install <module name>
 ```
 
-# 🚀&nbsp;Installation 
+## Installation 
 1. Clone the repository 
 ```
 https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant.git
@@ -80,7 +80,7 @@ $git push origin master
 ```
 Thats all about installation and version control with **Git**
 
-## :key: Result 
+## Result 
 
 <img src="Output.png" width=800>
 
