@@ -27,7 +27,7 @@ A voice assistant is a digital assistant that uses voice recognition, speech syn
 - Password Protected :closed_lock_with_key:
 
 
-## 🌟 Tech Stacks
+## Tech Stacks
 **Python 3.7**
 
 ## :hourglass: Project Demo
@@ -88,9 +88,6 @@ Thats all about installation and version control with **Git**
 
 [<img src="DWOC.jpeg" width=500>](https://devscript.tech/woc/)
 [<img src="Cwoc.jpg" width=500>](https://crosswoc.ieeedtu.in/)
-
-## Slack Channel for CWOC 2021
-[Cwoc 21 | Ashtech personal voice assistant]( https://join.slack.com/t/cwoc21ashtech-6kh1974/shared_invite/zt-m07g8uuu-bRwsytfw0Hfqtq9BHC75qQ)
 
 ## :clap: And it's done!
 Feel free to mail me for any doubts/query 
