@@ -16,21 +16,21 @@ A voice assistant is a digital assistant that uses voice recognition, speech syn
 - Opening websites like Wikipedia, Stack Overflow, Github etc.
 - Capturing images.
 - Predicts time, date, weather report etc. 
-- Search Videos on [Youtube](https://www.youtube.com/) :mag:
-- Open any Operating System files like MS-Word, MS-Excel, Notepad, etc :desktop_computer:
+- Search Videos on [Youtube](https://www.youtube.com/)
+- Open any Operating System files like MS-Word, MS-Excel, Notepad, etc 
 - Say Jokes :grin:
-- Help in Shopping :shopping_cart:
-- Find out Jobs :briefcase:
-- Search [Wikipedia](https://www.wikipedia.org/) :mag:
-- Find Courses :notebook_with_decorative_cover::closed_book:
-- Track COVID-19 :medical_symbol:
-- Password Protected :closed_lock_with_key:
+- Help in Shopping 
+- Find out Jobs 
+- Search [Wikipedia](https://www.wikipedia.org/)
+- Find Courses 
+- Track COVID-19
+- Password Protected 
 
 
 ## Tech Stacks
 **Python 3.7**
 
-## :hourglass: Project Demo
+## Project Demo
 - [AshTech 2.0 - AI Personal Voice Assistant](https://www.youtube.com/watch?v=BArmz8vtHB8)
 
 ## Contribution guidelines 
