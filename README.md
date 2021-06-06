@@ -7,15 +7,15 @@
 
 
 
-## 🔎  Introduction
+## Introduction
 A voice assistant is a digital assistant that uses voice recognition, speech synthesis, and natural language processing (NLP) to provide a service through a particular application.
 
 ## :heart: Features in AshTech
  AshTech is a Personal Artificial Intelligence voice assistant used to predict the basic functions like, 
-- Searching 🔎 
-- Opening websites like Wikipedia, Stack Overflow, Github etc. 👨‍💻
-- Capturing images. 📸 
-- Predicts time, date, weather report etc. 💡🔎
+- Searching
+- Opening websites like Wikipedia, Stack Overflow, Github etc.
+- Capturing images.
+- Predicts time, date, weather report etc. 
 - Search Videos on [Youtube](https://www.youtube.com/) :mag:
 - Open any Operating System files like MS-Word, MS-Excel, Notepad, etc :desktop_computer:
 - Say Jokes :grin:
@@ -34,7 +34,7 @@ A voice assistant is a digital assistant that uses voice recognition, speech syn
 - [AshTech 2.0 - AI Personal Voice Assistant](https://www.youtube.com/watch?v=BArmz8vtHB8)
 
 ## :handshake: Contribution guidelines 
-Follow these algorithms to contribute to the AshTech repository 📝
+Follow these algorithms to contribute to the AshTech repository 
 - Fork this repository 
 - Select your comfortable issues given in issues feature [click here to see the issues](https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant/issues).
 - Read the [Code of Conduct](https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant/blob/master/CODE_OF_CONDUCT.md) .
@@ -42,8 +42,8 @@ Follow these algorithms to contribute to the AshTech repository 📝
 - Stricly maintain the clear commit name and message.
 - Strictly maintain the decorum of this repository ❤
 
-### 📌Note  
-Feel free to file a new issue with a respective title and description on the **AshTech- AI Personal Voice Assistant**.  If you already found a solution to your problem, I would love to review your pull request! 💚🤎
+## Note  
+Feel free to file a new issue with a respective title and description on the **AshTech- AI Personal Voice Assistant**.  If you already found a solution to your problem, I would love to review your pull request! 
 
 ## :key: Prerequisites
 - You should install python version 3.7
