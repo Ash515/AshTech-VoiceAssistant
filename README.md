@@ -52,7 +52,7 @@ Feel free to file a new issue with a respective title and description on the **A
 pip install <module name>
 ```
 
-## Installation 
+## Installation and Contribution
 1. Clone the repository 
 ```
 https://github.com/Ash515/AshTech-AI_Personal_Voice_Assistant.git
